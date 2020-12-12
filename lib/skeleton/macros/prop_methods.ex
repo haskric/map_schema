@@ -3,7 +3,7 @@ defmodule MapSchema.PropMethods do
   The PropMethods module install for each field the macros `gets`, `puts` and `alter`
   """
 
-  alias MapSchema.Alters
+  alias MapSchema.Muts
   alias MapSchema.Gets
   alias MapSchema.Puts
 
@@ -28,9 +28,9 @@ defmodule MapSchema.PropMethods do
       else
         getters = Gets.install(lista_fields, type)
         puts = Puts.install(lista_fields, type)
-        alters = Alters.install(lista_fields, type)
+        muts = Muts.install(lista_fields, type)
 
-        [getters, puts, alters]
+        [getters, puts, muts]
       end
     end)
     |> List.flatten()

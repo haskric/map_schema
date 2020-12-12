@@ -1,13 +1,14 @@
 404.html
-MapSchema.Alters.html
 MapSchema.Base.html
 MapSchema.Check.html
+MapSchema.Examples.Person.html
 MapSchema.ExuString.html
 MapSchema.Gets.html
 MapSchema.JsonEncoding.html
 MapSchema.Methods.Gets.html
 MapSchema.Methods.PutPartial.html
 MapSchema.Methods.Puts.html
+MapSchema.Muts.html
 MapSchema.PropMethods.html
 MapSchema.PutPartial.html
 MapSchema.Puts.html
@@ -21,7 +22,7 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/search_items-d093db19c8.js
-dist/sidebar_items-674c8c7f18.js
+dist/search_items-9b22a533ed.js
+dist/sidebar_items-6c99729c1d.js
 index.html
 search.html

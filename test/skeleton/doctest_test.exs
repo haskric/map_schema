@@ -1,4 +1,4 @@
-defmodule MapSchemaDoctestTest do
+defmodule MapSchema.DoctestTest do
   @moduledoc false
   use ExUnit.Case
   doctest MapSchema.Examples.Person

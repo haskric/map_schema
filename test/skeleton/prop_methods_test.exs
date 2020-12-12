@@ -12,10 +12,10 @@ defmodule MapSchema.ProdMethodsTest do
     assert Person.get_age(person) == 29
   end
 
-  test "Using alter of person, adding 1 year" do
+  test "Using mutation of person, adding 1 year" do
     person = Person.new()
       |> Person.put_age(29)
-      |> Person.alter_age(&(&1 + 1))
+      |> Person.mut_age(&(&1 + 1))
 
     assert Person.get_age(person) == 30
   end

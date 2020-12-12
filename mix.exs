@@ -37,7 +37,7 @@ defmodule MapSchema.MixProject do
   end
 
   defp description do
-    "Simple, agile, map schema structure with types check"
+    "Simple, agile, map schema in elixir with types check and json encoding"
   end
 
   defp package do
