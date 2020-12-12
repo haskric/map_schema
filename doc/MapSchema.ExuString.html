@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="map_schema v0.1.0">
+    <title>MapSchema.ExuString — map_schema v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-674c8c7f18.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName">
+map_schema      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        MapSchema.ExuString <small class="app-vsn">(map_schema v0.1.0)</small>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Elixir UnOfficial Extension of String module</p>        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_float?/1">is_float?(value)</a>
+  </div>
+    <div class="summary-synopsis"><p>Check if a string is float</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_integer?/1">is_integer?(value)</a>
+  </div>
+    <div class="summary-synopsis"><p>Check if a string is integer</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_float!/1">to_float!(value)</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse string to Float</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_integer!/1">to_integer!(value)</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse string to Integer</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="is_float?/1">
+  <div class="detail-header">
+    <a href="#is_float?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_float?(value)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>is_float?(value :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+
+<p>Check if a string is float</p><h3 id="is_float?/1-why-is-interesting" class="section-heading">
+  <a href="#is_float?/1-why-is-interesting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Why is interesting
+</h3>
+<p>This method let you check a String is float.</p><h3 id="is_float?/1-target-of-proposal" class="section-heading">
+  <a href="#is_float?/1-target-of-proposal" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Target of proposal
+</h3>
+<p>Keep simple code</p><h2 id="is_float?/1-examples" class="section-heading">
+  <a href="#is_float?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-1">(</span><span class="s">&quot;1&quot;</span><span class="p" data-group-id="5269236698-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-2">(</span><span class="s">&quot;-0.10&quot;</span><span class="p" data-group-id="5269236698-2">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-3">(</span><span class="s">&quot;10.0000000&quot;</span><span class="p" data-group-id="5269236698-3">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-4">(</span><span class="s">&quot;10.1&quot;</span><span class="p" data-group-id="5269236698-4">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-5">(</span><span class="s">&quot;invalid_float&quot;</span><span class="p" data-group-id="5269236698-5">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-6">(</span><span class="ss">:invalid_string</span><span class="p" data-group-id="5269236698-6">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="5269236698-7">[</span><span class="s">&quot;1.2&quot;</span><span class="p">,</span><span class="s">&quot;3.1&quot;</span><span class="p">,</span><span class="s">&quot;invalid&quot;</span><span class="p" data-group-id="5269236698-7">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">all?</span><span class="p" data-group-id="5269236698-8">(</span><span class="o">&amp;</span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_float?</span><span class="p" data-group-id="5269236698-9">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="5269236698-9">)</span><span class="p" data-group-id="5269236698-8">)</span><span class="w">
+</span><span class="no">false</span></code></pre>  </section>
+</section>
+<section class="detail" id="is_integer?/1">
+  <div class="detail-header">
+    <a href="#is_integer?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_integer?(value)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>is_integer?(value :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+
+<p>Check if a string is integer</p><h3 id="is_integer?/1-why-is-interesting" class="section-heading">
+  <a href="#is_integer?/1-why-is-interesting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Why is interesting
+</h3>
+<p>This method let you check a String is integer.</p><h3 id="is_integer?/1-target-of-proposal" class="section-heading">
+  <a href="#is_integer?/1-target-of-proposal" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Target of proposal
+</h3>
+<p>Keep simple code</p><h2 id="is_integer?/1-examples" class="section-heading">
+  <a href="#is_integer?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-1">(</span><span class="s">&quot;1&quot;</span><span class="p" data-group-id="7640922400-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-2">(</span><span class="s">&quot;-1&quot;</span><span class="p" data-group-id="7640922400-2">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-3">(</span><span class="s">&quot;10.0&quot;</span><span class="p" data-group-id="7640922400-3">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-4">(</span><span class="s">&quot;10.1&quot;</span><span class="p" data-group-id="7640922400-4">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-5">(</span><span class="s">&quot;invalid_integer&quot;</span><span class="p" data-group-id="7640922400-5">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-6">(</span><span class="ss">:invalid_string</span><span class="p" data-group-id="7640922400-6">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="7640922400-7">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;3&quot;</span><span class="p">,</span><span class="s">&quot;invalid&quot;</span><span class="p" data-group-id="7640922400-7">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">all?</span><span class="p" data-group-id="7640922400-8">(</span><span class="o">&amp;</span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">is_integer?</span><span class="p" data-group-id="7640922400-9">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="7640922400-9">)</span><span class="p" data-group-id="7640922400-8">)</span><span class="w">
+</span><span class="no">false</span></code></pre>  </section>
+</section>
+<section class="detail" id="to_float!/1">
+  <div class="detail-header">
+    <a href="#to_float!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_float!(value)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>to_float!(value :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>() | :error</pre>
+      </div>
+
+<p>Parse string to Float</p><h3 id="to_float!/1-why-is-interesting" class="section-heading">
+  <a href="#to_float!/1-why-is-interesting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Why is interesting
+</h3>
+<p>This method let you cast fast a String to float without require use a official Float.parse/2
+that return a tuple. This method return an float number or :error</p><h3 id="to_float!/1-target-of-proposal" class="section-heading">
+  <a href="#to_float!/1-target-of-proposal" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Target of proposal
+</h3>
+<p>Keep simple code</p><h2 id="to_float!/1-examples" class="section-heading">
+  <a href="#to_float!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-1">(</span><span class="s">&quot;1&quot;</span><span class="p" data-group-id="6257706291-1">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-2">(</span><span class="s">&quot;-0.10&quot;</span><span class="p" data-group-id="6257706291-2">)</span><span class="w">
+</span><span class="o">-</span><span class="mf">0.10</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-3">(</span><span class="s">&quot;10.0000000&quot;</span><span class="p" data-group-id="6257706291-3">)</span><span class="w">
+</span><span class="mf">10.0</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-4">(</span><span class="s">&quot;10.1&quot;</span><span class="p" data-group-id="6257706291-4">)</span><span class="w">
+</span><span class="mf">10.1</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-5">(</span><span class="s">&quot;invalid_float&quot;</span><span class="p" data-group-id="6257706291-5">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-6">(</span><span class="ss">:invalid_string</span><span class="p" data-group-id="6257706291-6">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6257706291-7">[</span><span class="s">&quot;1.1&quot;</span><span class="p">,</span><span class="s">&quot;3.3&quot;</span><span class="p">,</span><span class="s">&quot;invalid&quot;</span><span class="p" data-group-id="6257706291-7">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="6257706291-8">(</span><span class="o">&amp;</span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_float!</span><span class="p" data-group-id="6257706291-9">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="6257706291-9">)</span><span class="p" data-group-id="6257706291-8">)</span><span class="w">
+</span><span class="p" data-group-id="6257706291-10">[</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="ss">:error</span><span class="p" data-group-id="6257706291-10">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="to_integer!/1">
+  <div class="detail-header">
+    <a href="#to_integer!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_integer!(value)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>to_integer!(value :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | :error</pre>
+      </div>
+
+<p>Parse string to Integer</p><h3 id="to_integer!/1-why-is-interesting" class="section-heading">
+  <a href="#to_integer!/1-why-is-interesting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Why is interesting
+</h3>
+<p>This method let you cast fast a String to integer without require use a official Integer.parse/2
+that return a tuple. This method return an integer number or :error.</p><h3 id="to_integer!/1-target-of-proposal" class="section-heading">
+  <a href="#to_integer!/1-target-of-proposal" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Target of proposal
+</h3>
+<p>Keep simple code</p><h2 id="to_integer!/1-examples" class="section-heading">
+  <a href="#to_integer!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-1">(</span><span class="s">&quot;1&quot;</span><span class="p" data-group-id="1767998120-1">)</span><span class="w">
+</span><span class="mi">1</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-2">(</span><span class="s">&quot;-1&quot;</span><span class="p" data-group-id="1767998120-2">)</span><span class="w">
+</span><span class="o">-</span><span class="mi">1</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-3">(</span><span class="s">&quot;10.0&quot;</span><span class="p" data-group-id="1767998120-3">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-4">(</span><span class="s">&quot;10.1&quot;</span><span class="p" data-group-id="1767998120-4">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-5">(</span><span class="s">&quot;invalid_integer&quot;</span><span class="p" data-group-id="1767998120-5">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-6">(</span><span class="ss">:invalid_string</span><span class="p" data-group-id="1767998120-6">)</span><span class="w">
+</span><span class="ss">:error</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="1767998120-7">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;3&quot;</span><span class="p">,</span><span class="s">&quot;invalid&quot;</span><span class="p" data-group-id="1767998120-7">]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="1767998120-8">(</span><span class="o">&amp;</span><span class="nc">MapSchema.ExuString</span><span class="o">.</span><span class="n">to_integer!</span><span class="p" data-group-id="1767998120-9">(</span><span class="ni">&amp;1</span><span class="p" data-group-id="1767998120-9">)</span><span class="p" data-group-id="1767998120-8">)</span><span class="w">
+</span><span class="p" data-group-id="1767998120-10">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="ss">:error</span><span class="p" data-group-id="1767998120-10">]</span></code></pre>  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
