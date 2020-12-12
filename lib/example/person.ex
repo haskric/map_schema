@@ -1,4 +1,5 @@
 defmodule MapSchema.Examples.Person do
+  @moduledoc false
   use MapSchema,
     schema: %{
         "name" => :string,
