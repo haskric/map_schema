@@ -3,6 +3,19 @@ defmodule MapSchema.ReadmeExamplesTest do
   use ExUnit.Case
   alias MapSchema.Examples.Person
 
+  test "Example get and put usage" do
+    person = Person.new()
+      |> Person.put_name("Leo")
+      |> Person.put_surname("Messi")
+      |> Person.put_country("Argentina")
+      |> Person.put_age(33)
+
+    assert Person.get_name(person) == "Leo"
+    assert Person.get_surname(person) == "Messi"
+    assert Person.get_country(person) == "Argentina"
+    assert Person.get_age(person) == 33
+  end
+
   test "Example mutation of age" do
     person = Person.new()
     |> Person.put_age(29)

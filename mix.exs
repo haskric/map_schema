@@ -46,7 +46,7 @@ defmodule MapSchema.MixProject do
       files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
                 license* CHANGELOG* changelog* src),
       #licenses: ["Apache-2.0"],
-      #links: %{"GitHub" => "https://github.com/elixir-ecto/postgrex"}
+      links: %{"GitHub" => "https://github.com/haskric/map_schema"}
     ]
   end
 end

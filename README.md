@@ -1,6 +1,6 @@
 # MapSchema
 
-It´s a Simple, Agile, Map schema in Elixir **with types check** , with **autocasting of integer and floats** of string to number and include **json encoding** using Jason library. 
+It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number and include **json encoding** using the popular Jason library. 
 
 ## Installation
 
@@ -12,7 +12,12 @@ def deps do
 end
 ```
 
-## Usage 
+## Usage
+
+The map_schema will include in the module multiple methods
+with documentation even with some doctest examples... ;) 
+then it´s simple create your schema, add ex_doc in mix, and use ``mix docs`` and your team will can see all methods that your module will have thanks the "witchcraft" of elixir macros, all ready to use it.
+
 ```elixir
 defmodule MapSchema.Examples.Person do
   @moduledoc false
@@ -32,16 +37,29 @@ defmodule MapSchema.Examples.Person do
     
 end
 ```
-With the magic of macros you will have the following methods 
 
 ### Basics functions
 | Method | Description |
 | :---: | :---: |
 | new         | Constructor         |
-| schema      | Schema              |
+| schema      | Return the Schema    |
 | is_valid?(map) | Is valid the map? |
 
 ### Gets and Puts functions
+```elixir
+  test "Example get and put usage" do
+    person = Person.new()
+      |> Person.put_name("Leo")
+      |> Person.put_surname("Messi")
+      |> Person.put_country("Argentina")
+      |> Person.put_age(33)
+
+    assert Person.get_name(person) == "Leo"
+    assert Person.get_surname(person) == "Messi"
+    assert Person.get_country(person) == "Argentina"
+    assert Person.get_age(person) == 33
+  end
+```
 
 | Gets | Puts |
 | :--- | :--- |
@@ -94,13 +112,6 @@ With the magic of macros you will have the following methods
 
 ### JSON ENCONDING 
 
-
-| Method | Description |
-| :--- | :---: |
-| json_encode(map) | Map to Json |
-| json_encode(json) | Json to Map (Check typing, and cast) |
-| json_encode(mapa, json) | Json to Existing Map (Checking typing, and cast) |
-
 ```elixir
   test "Example of json encoding" do
     person = Person.new()
@@ -119,6 +130,14 @@ With the magic of macros you will have the following methods
     assert Person.get_age(person_json) == 45
   end
 ```
+
+| Method | Description |
+| :--- | :---: |
+| json_encode(map) | Map to Json |
+| json_encode(json) | Json to Map (Check typing, and cast) |
+| json_encode(mapa, json) | Json to Existing Map (Checking typing, and cast) |
+
+
 
 ### Table of Types
 
@@ -139,6 +158,9 @@ Note:
 | :list | :is_list |
 | :any | NONE |
 | in othercase | NONE |
+
+
+
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
