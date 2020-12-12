@@ -11,6 +11,7 @@ defmodule MapSchema.MixProject do
       package: package(),
       deps: deps(),
       name: "map_schema",
+      source_url: "https://github.com/haskric/map_schema",
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]
     ]
@@ -26,13 +27,14 @@ defmodule MapSchema.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      # Json encoder
       {:jason, "~> 1.2"},
+
+      # deps.dev
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.19", only: :dev},
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
   end
 
@@ -42,11 +44,15 @@ defmodule MapSchema.MixProject do
 
   defp package do
     [
-      # These are the default files included in the package
-      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
-                license* CHANGELOG* changelog* src),
-      #licenses: ["Apache-2.0"],
+      files: [
+        "lib",
+        "LICENSE",
+        "mix.exs",
+        "README.md"
+      ],
+      licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/haskric/map_schema"}
     ]
   end
+
 end

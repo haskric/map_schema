@@ -64,16 +64,20 @@ map_schema      </a>
 
       <h1>
         MapSchema.PutPartial <small class="app-vsn">(map_schema v0.1.0)</small>
+          <a href="https://github.com/haskric/map_schema/blob/master/lib/skeleton/macros/put_partial.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
       </h1>
 
 
         <section id="moduledoc">
 <p>The PutPartial module compone the macros that let us build the <code class="inline">put/2</code>
-that put a new values usign a map.</p><p>It´s method check the type of every property following the schema.</p><h1>Example:</h1><pre><code class="nohighlight makeup elixir"><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="1180188367-1">(</span><span class="p" data-group-id="1180188367-1">)</span><span class="w">
-  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="1180188367-2">(</span><span class="p" data-group-id="1180188367-3">%{</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="s">&quot;ric&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;age&quot;</span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">29</span><span class="p" data-group-id="1180188367-3">}</span><span class="p" data-group-id="1180188367-2">)</span><span class="w">
+that put a new values usign a map.</p><p>It´s method check the type of every property following the schema.</p><h1>Example:</h1><pre><code class="nohighlight makeup elixir"><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="0841236128-1">(</span><span class="p" data-group-id="0841236128-1">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">put</span><span class="p" data-group-id="0841236128-2">(</span><span class="p" data-group-id="0841236128-3">%{</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="s">&quot;ric&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;age&quot;</span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">29</span><span class="p" data-group-id="0841236128-3">}</span><span class="p" data-group-id="0841236128-2">)</span><span class="w">
 
-</span><span class="n">assert</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">get_name</span><span class="p" data-group-id="1180188367-4">(</span><span class="n">person</span><span class="p" data-group-id="1180188367-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;ric&quot;</span><span class="w">
-</span><span class="n">assert</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">get_age</span><span class="p" data-group-id="1180188367-5">(</span><span class="n">person</span><span class="p" data-group-id="1180188367-5">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">29</span></code></pre>        </section>
+</span><span class="n">assert</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">get_name</span><span class="p" data-group-id="0841236128-4">(</span><span class="n">person</span><span class="p" data-group-id="0841236128-4">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;ric&quot;</span><span class="w">
+</span><span class="n">assert</span><span class="w"> </span><span class="nc">Person</span><span class="o">.</span><span class="n">get_age</span><span class="p" data-group-id="0841236128-5">(</span><span class="n">person</span><span class="p" data-group-id="0841236128-5">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">29</span></code></pre>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -110,6 +114,10 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">install()</h1>
+      <a href="https://github.com/haskric/map_schema/blob/master/lib/skeleton/macros/put_partial.ex#L19" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
   </div>
 
   <section class="docstring">
