@@ -22,4 +22,21 @@ defmodule MapSchema.ReadmeExamplesTest do
     assert Person.get_country(person) == "Spain"
   end
 
+  test "Example of json encoding" do
+    person = Person.new()
+    person = Person.put(person, %{
+      "contact" => %{"email" => "hi@mail.com" },
+      "age" => 45
+    })
+
+    json = Person.json_encode(person)
+    json_expected = "{\"age\":45,\"contact\":{\"email\":\"hi@mail.com\"}}"
+    assert json == json_expected
+
+    person_json = Person.json_decode(json)
+
+    assert Person.get_contact_email(person_json) == "hi@mail.com"
+    assert Person.get_age(person_json) == 45
+  end
+
 end

@@ -1,7 +1,6 @@
 # MapSchema
 
-It´s a Simple, Agile, Map schema in Elixir **with types check** 
-and **json encoding** using Jason library.
+It´s a Simple, Agile, Map schema in Elixir **with types check** , with **autocasting of integer and floats** of string to number and include **json encoding** using Jason library. 
 
 ## Installation
 
@@ -40,6 +39,7 @@ With the magic of macros you will have the following methods
 | :---: | :---: |
 | new         | Constructor         |
 | schema      | Schema              |
+| is_valid?(map) | Is valid the map? |
 
 ### Gets and Puts functions
 
@@ -91,6 +91,54 @@ With the magic of macros you will have the following methods
 | mut_contact_phone(map,fn_mut) | Change the value using fn_mut |
 | mut_contact_others(map,fn_mut) | Change the value using fn_mut |
 
+
+### JSON ENCONDING 
+
+
+| Method | Description |
+| :--- | :---: |
+| json_encode(map) | Map to Json |
+| json_encode(json) | Json to Map (Check typing, and cast) |
+| json_encode(mapa, json) | Json to Existing Map (Checking typing, and cast) |
+
+```elixir
+  test "Example of json encoding" do
+    person = Person.new()
+    person = Person.put(person, %{
+      "contact" => %{"email" => "hi@mail.com" },
+      "age" => 45
+    })
+
+    json = Person.json_encode(person)
+    json_expected ="{\"age\":45,\"contact\":{\"email\":\"hi@mail.com\"}}"
+    assert json == json_expected
+
+    person_json = Person.json_decode(json)
+
+    assert Person.get_contact_email(person_json) == "hi@mail.com"
+    assert Person.get_age(person_json) == 45
+  end
+```
+
+### Table of Types
+
+Note:
+**:string_to_integer** and **:string_to_float** make **implicit the cast of string to number** then automatic and simple you will have your information in the right format and type following the schema define. ;)
+
+
+| Type | Use Guard |
+| :---: | :---: |
+| :integer         | :is_integer         |
+| :float      | :is_float             |
+| :string_to_integer         | :is_integer         |
+| :string_to_float      | :is_float             |
+| :string | :is_bitstring |
+| :bool | :is_boolean |
+| :boolean | :is_boolean |
+| :map | :is_map |
+| :list | :is_list |
+| :any | NONE |
+| in othercase | NONE |
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can

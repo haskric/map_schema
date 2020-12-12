@@ -4,11 +4,11 @@ defmodule MapSchema.JsonEncoding do
 
   - json_encode(map)
   Take a map and cast to json string format.
-  - json_encode(json)
+  - json_decode(json)
   Take a json string format and build a map,  following the rules of schema.
 
   Note:It´s check the data types.
-  - json_encode(mapa, json)
+  - json_decode(mapa, json)
   Take a json string format and build a map,  change the values of the actual map following the rules of schema.
 
   Note:It´s check the data types.

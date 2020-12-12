@@ -3,8 +3,8 @@ defmodule MapSchema.PropMethods do
   The PropMethods module install for each field the macros `gets`, `puts` and `alter`
   """
 
-  alias MapSchema.Muts
   alias MapSchema.Gets
+  alias MapSchema.Muts
   alias MapSchema.Puts
 
   def install(schema) do
