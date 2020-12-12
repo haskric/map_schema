@@ -83,7 +83,6 @@ defmodule MapSchema.Puts do
 
     {testing_value, _} = Utils.build_test_values(type)
 
-    #IO.puts " #{field} check #{testing_value}"
     quote bind_quoted: [field: field,  testing_value: testing_value ,
     lista_fields: lista_fields,  type: type ,  guard: guard] do
       name_function = String.to_atom("put_" <> field)

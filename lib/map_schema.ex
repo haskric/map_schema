@@ -12,7 +12,6 @@ defmodule MapSchema do
   defmacro __using__(opts) do
     schema = Keyword.get(opts, :schema)
 
-    IO.puts "Using MapSchema"
     base_methods = Base.install(schema)
     properties_methods = PropMethods.install(schema)
 
