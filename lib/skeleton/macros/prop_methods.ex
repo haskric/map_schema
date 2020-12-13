@@ -5,6 +5,7 @@ defmodule MapSchema.PropMethods do
 
   alias MapSchema.Gets
   alias MapSchema.Muts
+  alias MapSchema.PutsTypes
   alias MapSchema.Puts
 
   def install(schema) do
@@ -27,7 +28,9 @@ defmodule MapSchema.PropMethods do
         installing_getters_and_setters(sub_schema, lista_fields)
       else
         getters = Gets.install(lista_fields, type)
-        puts = Puts.install(lista_fields, type)
+        #puts = Puts.install(lista_fields, type)
+
+        puts = PutsTypes.install(lista_fields, type)
         muts = Muts.install(lista_fields, type)
 
         [getters, puts, muts]
