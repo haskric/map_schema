@@ -14,8 +14,8 @@ defmodule MapSchema.PutPartial do
       assert Person.get_age(person) == 29
 
   """
+  alias MapSchema.Methods.PutPartialTypes
 
-  alias MapSchema.Methods.PutPartial
   def install do
     install_put_partial()
   end
@@ -37,7 +37,9 @@ defmodule MapSchema.PutPartial do
       But before of update the values always will be check the type.
       """
       def unquote(:put)(var!(mapa), var!(map_update)) when is_map(var!(map_update)) do
-        PutPartial.put(__MODULE__, var!(mapa), var!(map_update))
+        #PutPartial.put(__MODULE__, var!(mapa), var!(map_update))
+        var!(custom_types) = schema_types()
+        PutPartialTypes.put(__MODULE__, var!(mapa), var!(map_update), var!(custom_types))
       end
     end
   end

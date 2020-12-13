@@ -14,6 +14,8 @@ defmodule MapSchema.ExuString do
   Keep simple code
 
   ## Examples
+      iex> MapSchema.ExuString.to_integer!(1)
+      1
 
       iex> MapSchema.ExuString.to_integer!("1")
       1
@@ -38,6 +40,9 @@ defmodule MapSchema.ExuString do
 
   """
   @spec to_integer!(value ::String.t) :: integer | :error
+  def to_integer!(value) when is_integer(value) do
+    value
+  end
   def to_integer!(value) when is_bitstring(value) do
     if String.contains?(value, ".") do
       :error
@@ -101,6 +106,8 @@ defmodule MapSchema.ExuString do
   Keep simple code
 
   ## Examples
+      iex> MapSchema.ExuString.to_float!(1.0)
+      1.0
 
       iex> MapSchema.ExuString.to_float!("1")
       :error
@@ -125,6 +132,9 @@ defmodule MapSchema.ExuString do
 
   """
   @spec to_float!(value ::String.t ) :: float | :error
+  def to_float!(value) when is_float(value) do
+    value
+  end
   def to_float!(value) when is_bitstring(value) do
     if String.contains?(value, ".") do
       case Float.parse(value) do

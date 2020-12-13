@@ -5,18 +5,26 @@ defmodule MapSchema.PropMethods do
 
   alias MapSchema.Gets
   alias MapSchema.Muts
-  alias MapSchema.Puts
+  alias MapSchema.PutsTypes
 
-  def install(schema) do
-    {my_schema, []} =  Code.eval_quoted(schema)
-    if is_map(my_schema) do
-      installing_getters_and_setters(my_schema, [])
-    else
-      throw "SCHEMA SHOULD BE A MAP"
+  def install(schema, custom_types) do
+    case get_param_schema(schema) do
+      :error -> throw "SCHEMA SHOULD BE A MAP"
+      my_schema ->
+        installing_getters_and_setters(my_schema, custom_types, [])
     end
   end
 
-  defp installing_getters_and_setters(my_schema, lista_fields) do
+  defp get_param_schema(schema) do
+    {my_schema, []} =  Code.eval_quoted(schema)
+    if is_map(my_schema) do
+      my_schema
+    else
+      :error
+    end
+  end
+
+  defp installing_getters_and_setters(my_schema, custom_types, lista_fields) do
     Map.keys(my_schema)
     |> Enum.map(fn(field) ->
       type = get_in(my_schema, [field])
@@ -24,10 +32,10 @@ defmodule MapSchema.PropMethods do
 
       if is_map(type) do
         sub_schema = type
-        installing_getters_and_setters(sub_schema, lista_fields)
+        installing_getters_and_setters(sub_schema, custom_types, lista_fields)
       else
         getters = Gets.install(lista_fields, type)
-        puts = Puts.install(lista_fields, type)
+        puts = PutsTypes.install(custom_types, lista_fields, type )
         muts = Muts.install(lista_fields, type)
 
         [getters, puts, muts]

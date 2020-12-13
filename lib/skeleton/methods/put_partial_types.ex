@@ -1,15 +1,16 @@
-defmodule MapSchema.Methods.PutPartial do
+defmodule MapSchema.Methods.PutPartialTypes do
   @moduledoc """
   The module have the internal functionality of the methods put_partial
 
   """
+  alias MapSchema.Types
   alias MapSchema.Utils
 
-  def put(module, map, map_update) do
+  def put(module, map, map_update, custom_types) do
     schema = apply(module, :schema, [])
-    put(map, module, schema, map_update, [])
+    put(map, module, schema, map_update, custom_types, [])
   end
-  defp put(map, module, schema, map_update, lista_fields) do
+  defp put(map, module, schema, map_update, custom_types, lista_fields) do
     map_update
     |> Map.keys()
     |> Enum.reduce(map, fn(field, acc_map) ->
@@ -20,8 +21,7 @@ defmodule MapSchema.Methods.PutPartial do
       cond do
         type == nil ->
           throw("Error schema: the field " <> field <> " dont exit in schema")
-        Utils.is_flexible_nested?(type) ->
-
+        Types.is_flexible_nested?(custom_types, type) ->
           acc_map
           |> call_put_of_field(module, lista_fields, valor)
         is_map(type) ->
@@ -29,7 +29,7 @@ defmodule MapSchema.Methods.PutPartial do
           sub_map_update = get_in(map_update, [field])
 
           acc_map
-          |> put(module, sub_schema, sub_map_update, lista_fields)
+          |> put(module, sub_schema, sub_map_update, custom_types, lista_fields)
         true ->
           acc_map
           |> call_put_of_field(module, lista_fields, valor)

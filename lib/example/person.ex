@@ -1,5 +1,7 @@
 defmodule MapSchema.Examples.Person do
-  @moduledoc false
+  @moduledoc """
+  Person example
+  """
   use MapSchema,
     schema: %{
         "name" => :string,
@@ -11,6 +13,11 @@ defmodule MapSchema.Examples.Person do
           "phone" => :string,
           "others" => :any
         }
-    }
+    },
+    custom_types: [
+      MapSchema.DefaultTypes.MSchemaFloat,
+      MapSchema.DefaultTypes.MSchemaInteger,
+      MapSchema.DefaultTypes.MSchemaString
+    ]
 
 end
