@@ -6,6 +6,9 @@ defmodule MapSchema.ExceptionsTest do
   alias MapSchema.Examples.TestingExample
   alias MapSchema.Exceptions
 
+  ## In DefinitionMapSchemaTest
+  ## Testing excetions of definition
+
   test "Exception type_error, name is string" do
     try do
       Person.new()

@@ -2,15 +2,15 @@ defmodule MapSchema.PropMethods do
   @moduledoc """
   The PropMethods module install for each field the macros `gets`, `puts` and `alter`
   """
-
+  alias MapSchema.Exceptions
   alias MapSchema.Gets
-  #alias MapSchema.Muts
   alias MapSchema.MutsTypes
   alias MapSchema.PutsTypes
 
+
   def install(schema, custom_types) do
     case get_param_schema(schema) do
-      :error -> throw "SCHEMA SHOULD BE A MAP"
+      :error -> Exceptions.throw_config_error_schema_should_be_map()
       my_schema ->
         installing_getters_and_setters(my_schema, custom_types, [])
     end

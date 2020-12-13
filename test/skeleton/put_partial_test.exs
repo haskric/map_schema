@@ -31,6 +31,20 @@ defmodule MapSchema.PutPartialTest do
     assert Person.get_contact_others(person) == %{"social"=> "ric"}
   end
 
+  test "Is posible add anything in flexible nested field" do
+    defmodule TestingNested do
+      @moduledoc false
+      use MapSchema,
+        schema: %{
+          "flex_nested" => :any
+        }
+    end
+
+    item = TestingNested.new()
+      |> TestingNested.put_flex_nested(%{hello: "world"})
+
+    assert TestingNested.get_flex_nested(item) == %{hello: "world"}
+end
 
   test "Using put with exception and put_ifmatch without exception" do
     try do

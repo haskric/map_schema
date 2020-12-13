@@ -3,6 +3,8 @@ defmodule MapSchema.DefaultTypes do
   Default types
   """
 
+  alias MapSchema.Exceptions
+
   def param_config(list_custom_types) do
     {list_custom_types, []} =  Code.eval_quoted(list_custom_types)
 
@@ -13,7 +15,7 @@ defmodule MapSchema.DefaultTypes do
         list_custom_types
         |> build_map_custom_types()
       true ->
-        throw "CUSTOM TYPES SHOULD BE A MAP OR NIL"
+        Exceptions.throw_config_error_custom_types_should_be_list()
     end
   end
 

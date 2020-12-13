@@ -19,9 +19,6 @@ defmodule MapSchema.Types do
     custom_types
     |> Map.get(type)
   end
-  def get_custom_type_module(module, type) do
-    apply(module, :schema_get_type_module, [type])
-  end
 
   def cast_value(nil, value), do: value
   def cast_value(module_custom_type, value) do
