@@ -32,7 +32,7 @@ defmodule MapSchema.DefaultTypes do
   end
 
 
-  def build_map_custom_types() do
+  def build_map_custom_types do
     build_map_custom_types([])
   end
   def build_map_custom_types(list_custom_types) when is_list(list_custom_types) do
@@ -45,6 +45,18 @@ defmodule MapSchema.DefaultTypes do
     end)
   end
 
+
+  def execute_autocast_typechecking(module_custom_type, value) do
+    case cast_value(module_custom_type, value) do
+      :error -> {:error_cast, nil}
+      after_cast_value ->
+        if check_is_valid?(module_custom_type, after_cast_value) do
+          {:ok, after_cast_value}
+        else
+          {:error_type, nil}
+        end
+    end
+  end
 
 
   def get_custom_type_module(custom_types, type) when is_map(custom_types) do
