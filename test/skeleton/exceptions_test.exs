@@ -30,6 +30,32 @@ defmodule MapSchema.ExceptionsTest do
     end
   end
 
+  test "Exception type_error, name is string using mut" do
+    try do
+      Person.new()
+      |> Person.mut_name(fn(_old) -> 1024 end)
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.type_error("name", :string)
+    end
+  end
+
+  test "Exception cast in mut String" do
+    try do
+      TestingExample.new()
+      |> TestingExample.mut_string_autocast_to_integer(fn(_old) ->
+        "it isnt a integer"
+      end)
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.cast_error("string_autocast_to_integer", :string_to_integer)
+    end
+  end
+
   test "not_exist_field_in_schema" do
     try do
       Person.new()

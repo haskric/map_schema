@@ -4,7 +4,8 @@ defmodule MapSchema.PropMethods do
   """
 
   alias MapSchema.Gets
-  alias MapSchema.Muts
+  #alias MapSchema.Muts
+  alias MapSchema.MutsTypes
   alias MapSchema.PutsTypes
 
   def install(schema, custom_types) do
@@ -36,7 +37,7 @@ defmodule MapSchema.PropMethods do
       else
         getters = Gets.install(lista_fields, type)
         puts = PutsTypes.install(custom_types, lista_fields, type )
-        muts = Muts.install(lista_fields, type)
+        muts = MutsTypes.install(custom_types, lista_fields, type )
 
         [getters, puts, muts]
       end
