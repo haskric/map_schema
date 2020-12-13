@@ -26,12 +26,18 @@ defmodule MapSchema.Types do
   def cast_value(nil, value), do: value
   def cast_value(module_custom_type, value) do
     apply(module_custom_type , :cast, [value])
+  catch
+    _e ->
+      :error
   end
 
   def check_is_valid?(nil, _after_cast_value), do: true
   def check_is_valid?(:error, _after_cast_value), do: false
   def check_is_valid?(module_custom_type, after_cast_value) do
     apply(module_custom_type , :is_valid?, [after_cast_value])
+  catch
+    _e ->
+      false
   end
 
   def have_doctest?(custom_types, type) do
@@ -44,9 +50,14 @@ defmodule MapSchema.Types do
     if is_nil(module_custom_type) do
       :error
     else
-      module_custom_type
-      |> apply(:doctest_values, [])
-      |> choise_random_test()
+      try do
+        module_custom_type
+        |> apply(:doctest_values, [])
+        |> choise_random_test()
+      catch
+        _e ->
+          :error
+      end
     end
   end
 
