@@ -4,7 +4,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
 
   """
   alias MapSchema.Utils
-  alias MapSchema.DefaultTypes
+  alias MapSchema.Types
 
   def put(module, map, map_update, custom_types) do
     schema = apply(module, :schema, [])
@@ -21,7 +21,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
       cond do
         type == nil ->
           throw("Error schema: the field " <> field <> " dont exit in schema")
-        DefaultTypes.is_flexible_nested?(custom_types, type) ->
+        Types.is_flexible_nested?(custom_types, type) ->
           acc_map
           |> call_put_of_field(module, lista_fields, valor)
         is_map(type) ->
