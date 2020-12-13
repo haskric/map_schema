@@ -7,6 +7,7 @@ defmodule MapSchema.Examples.Person do
         "name" => :string,
         "surname" => :string,
         "country" => :string,
+        "lang" => :language_iso639,
         "age" => :integer,
         "contact" => %{
           "email" => :string,
@@ -15,9 +16,7 @@ defmodule MapSchema.Examples.Person do
         }
     },
     custom_types: [
-      MapSchema.DefaultTypes.MSchemaFloat,
-      MapSchema.DefaultTypes.MSchemaInteger,
-      MapSchema.DefaultTypes.MSchemaString
+      MapSchema.Examples.CustomTypeLang
     ]
 
 end

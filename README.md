@@ -1,13 +1,9 @@
 # MapSchema
 
-It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number and include **json encoding** using the popular Jason library. 
+It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number, let define **custom types with casting and validation** and include **json encoding** using the popular Jason library. 
 
 **Next release**
 Note: Now, I am working in improve it. You can use it but return here for check updates.
-
-[x] Custom Types (with casting,validation...)
-[ ] Improve documentation
-[ ] More examples
 
 ## Installation
 
@@ -36,14 +32,17 @@ defmodule MapSchema.Examples.Person do
         "name" => :string,
         "surname" => :string,
         "country" => :string,
+        "lang" => :language_iso639,
         "age" => :integer,
         "contact" => %{
           "email" => :string,
           "phone" => :string,
           "others" => :any
         }
-    }
-
+    },
+    custom_types: [
+      MapSchema.Examples.CustomTypeLang
+    ]
     
 end
 ```
@@ -63,11 +62,16 @@ end
       |> Person.put_surname("Messi") # %{"name" => "Leo", "surname" => "Messi" }
       |> Person.put_country("Argentina") # %{"name" => "Leo", "surname" => "Messi", "country" => "Argentina" }
       |> Person.put_age(33) # %{"name" => "Leo", "surname" => "Messi", "country" => "Argentina", "age" => 33 }
+      |> Person.put_lang("ES") # %{"name" => "Leo", "surname" => "Messi", "country" => "Argentina", "age" => 33 , "lang" => "es"} 
+      
+      # the lang field it´s custom type :language_iso639 make automatic # the downcase in strings before of validate. 
+      # Review the example MapSchema.Examples.CustomTypeLang
 
     assert Person.get_name(person) == "Leo"
     assert Person.get_surname(person) == "Messi"
     assert Person.get_country(person) == "Argentina"
     assert Person.get_age(person) == 33
+    assert Person.get_lang(person) == "es"
   end
 ```
 

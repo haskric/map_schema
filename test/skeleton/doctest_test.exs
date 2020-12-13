@@ -3,5 +3,6 @@ defmodule MapSchema.DoctestTest do
   use ExUnit.Case
   doctest MapSchema.Examples.Person
   doctest MapSchema.Examples.TestingExample
+  doctest MapSchema.Examples.CustomTypeLang
 
 end

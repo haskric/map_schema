@@ -9,11 +9,13 @@ defmodule MapSchema.ReadmeExamplesTest do
       |> Person.put_surname("Messi")
       |> Person.put_country("Argentina")
       |> Person.put_age(33)
+      |> Person.put_lang("ES")
 
     assert Person.get_name(person) == "Leo"
     assert Person.get_surname(person) == "Messi"
     assert Person.get_country(person) == "Argentina"
     assert Person.get_age(person) == 33
+    assert Person.get_lang(person) == "es"
   end
 
   test "Example mutation of age" do

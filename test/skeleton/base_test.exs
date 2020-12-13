@@ -17,7 +17,8 @@ defmodule MapSchema.BaseTest do
         "email" => :string,
         "phone" => :string,
         "others" => :any
-      }
+      },
+      "lang" => :language_iso639
     }
   end
 
