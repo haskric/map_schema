@@ -1,6 +1,6 @@
 # MapSchema
 
-It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number, let define **custom types with casting and validation** and include **json encoding** using the popular Jason library. 
+It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number, let define **custom types with casting and validation** and include **json encoding** using the popular Jason library.... furthermore it can build the **documentation with doctest for validation your schemas** and share easily with your agile team.
 
 **Next release**
 Note: Now, I am working in improve it. You can use it but return here for check updates and documentation. 
