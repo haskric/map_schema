@@ -1,5 +1,6 @@
-defmodule MapSchema.Base do
-  @moduledoc """
+defmodule MapSchema.Macros.Base do
+  @moduledoc false
+  @doc """
   The base install
 
   - simple constructor `new/0`

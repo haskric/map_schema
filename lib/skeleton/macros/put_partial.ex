@@ -1,5 +1,6 @@
-defmodule MapSchema.PutPartial do
-  @moduledoc """
+defmodule MapSchema.Macros.PutPartial do
+  @moduledoc false
+  @doc """
   The PutPartial module compone the macros that let us build the `put/2`
   that put a new values usign a map.
 

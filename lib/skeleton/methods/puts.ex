@@ -1,14 +1,12 @@
 defmodule MapSchema.Methods.Puts do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   The module have the internal functionality of the methods puts
   """
 
   alias MapSchema.Exceptions
   alias MapSchema.Types
   alias MapSchema.Utils
-
-
-
 
   def generic_put_custom_type(module_custom_type, type, mapa, lista_fields, value) do
     case Types.execute_autocast_typechecking(module_custom_type, value) do
@@ -23,7 +21,6 @@ defmodule MapSchema.Methods.Puts do
         |> Exceptions.throw_type_error(type)
     end
   end
-
 
   defp generic_put(mapa, lista_fields, value) do
     mapa

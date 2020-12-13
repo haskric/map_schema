@@ -1,5 +1,6 @@
 defmodule MapSchema.Methods.Gets do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   The module have the internal functionality of the methods get
   """
 

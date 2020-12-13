@@ -1,11 +1,12 @@
-defmodule MapSchema.PropMethods do
-  @moduledoc """
+defmodule MapSchema.Macros.PropMethods do
+  @moduledoc false
+  @doc """
   The PropMethods module install for each field the macros `gets`, `puts` and `alter`
   """
   alias MapSchema.Exceptions
-  alias MapSchema.Gets
-  alias MapSchema.MutsTypes
-  alias MapSchema.PutsTypes
+  alias MapSchema.Macros.Gets
+  alias MapSchema.Macros.MutsTypes
+  alias MapSchema.Macros.PutsTypes
 
 
   def install(schema, custom_types) do

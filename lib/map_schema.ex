@@ -3,13 +3,15 @@ defmodule MapSchema do
   Macro module of `MapSchema`.
   """
 
-  alias MapSchema.Base
-  alias MapSchema.Check
-  alias MapSchema.CustomTypes
+  alias MapSchema.Macros.Base
+  alias MapSchema.Macros.Check
+  #alias MapSchema.CustomTypes
   alias MapSchema.DefaultTypes
-  alias MapSchema.JsonEncoding
-  alias MapSchema.PropMethods
-  alias MapSchema.PutPartial
+  alias MapSchema.Macros.JsonEncoding
+  alias MapSchema.Macros.PropMethods
+  alias MapSchema.Macros.PutPartial
+
+  alias MapSchema.Macros.CustomTypes
 
   defmacro __using__(opts) do
     schema = Keyword.get(opts, :schema)

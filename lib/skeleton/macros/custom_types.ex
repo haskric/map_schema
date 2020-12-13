@@ -1,5 +1,6 @@
-defmodule MapSchema.CustomTypes do
-  @moduledoc """
+defmodule MapSchema.Macros.CustomTypes do
+  @moduledoc false
+  @doc """
   The custom types install
 
   """

@@ -1,5 +1,6 @@
-defmodule MapSchema.MutsTypes do
-  @moduledoc """
+defmodule MapSchema.Macros.MutsTypes do
+  @moduledoc false
+  @doc """
   The muts module compone the macros that let us, build the methods mut:
 
   `mut_$field(map,fn(oldValue)-> ... newValue end)`

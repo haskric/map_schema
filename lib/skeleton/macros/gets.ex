@@ -1,5 +1,6 @@
-defmodule MapSchema.Gets do
-  @moduledoc """
+defmodule MapSchema.Macros.Gets do
+  @moduledoc false
+  @doc """
   The Gets module compone the macros that let us, build the methods get:
 
   - `get(map)`

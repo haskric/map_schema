@@ -1,5 +1,6 @@
-defmodule MapSchema.PutsTypes do
-  @moduledoc """
+defmodule MapSchema.Macros.PutsTypes do
+  @moduledoc false
+  @doc """
   The Puts module compone the macros that let us, build the methods put:
 
   - `put(map,field,value)`

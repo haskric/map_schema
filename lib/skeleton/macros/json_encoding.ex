@@ -1,5 +1,6 @@
-defmodule MapSchema.JsonEncoding do
-  @moduledoc """
+defmodule MapSchema.Macros.JsonEncoding do
+  @moduledoc false
+  @doc """
   The JsonEncoding module compone the macros that let us,  build the methods:
 
   - json_encode(map)

@@ -1,13 +1,13 @@
 defmodule MapSchema.Methods.PutPartialTypes do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   The module have the internal functionality of the methods put_partial
 
   """
+  alias MapSchema.Exceptions
+  alias MapSchema.Methods.PutPartialTypes
   alias MapSchema.Types
   alias MapSchema.Utils
-
-  alias MapSchema.Methods.PutPartialTypes
-  alias MapSchema.Exceptions
 
   defstruct module: nil,
             map: nil,

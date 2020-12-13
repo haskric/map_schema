@@ -1,5 +1,6 @@
-defmodule MapSchema.Check do
-  @moduledoc """
+defmodule MapSchema.Macros.Check do
+  @moduledoc false
+  @doc """
   The Check module compone the macros that let us, build the methods is_valid?:
 
   `is_valid?(map)`
