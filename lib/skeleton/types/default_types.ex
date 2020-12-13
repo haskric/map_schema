@@ -47,6 +47,10 @@ defmodule MapSchema.DefaultTypes do
 
 
 
+  def get_custom_type_module(custom_types, type) when is_map(custom_types) do
+    custom_types
+    |> Map.get(type)
+  end
   def get_custom_type_module(module, type) do
     apply(module, :schema_get_type_module, [type])
   end
@@ -62,11 +66,20 @@ defmodule MapSchema.DefaultTypes do
     apply(module_custom_type , :is_valid?, [after_cast_value])
   end
 
+  def have_doctest?(custom_types, type) do
+    get_doctest(custom_types, type) != :error
+  end
 
-  def get_doctest(module, type) do
-    get_custom_type_module(module, type)
-    |> apply(:doctest_values, [])
-    |> choise_random_test()
+  def get_doctest(custom_types, type) when is_map(custom_types) do
+    module_custom_type = get_custom_type_module(custom_types, type)
+
+    if is_nil(module_custom_type) do
+      :error
+    else
+      module_custom_type
+      |> apply(:doctest_values, [])
+      |> choise_random_test()
+    end
   end
 
   defp choise_random_test(set_tests) do

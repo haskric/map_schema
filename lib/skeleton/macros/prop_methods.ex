@@ -8,16 +8,16 @@ defmodule MapSchema.PropMethods do
   alias MapSchema.PutsTypes
   alias MapSchema.Puts
 
-  def install(schema) do
+  def install(schema,custom_types) do
     {my_schema, []} =  Code.eval_quoted(schema)
     if is_map(my_schema) do
-      installing_getters_and_setters(my_schema, [])
+      installing_getters_and_setters(my_schema, custom_types, [])
     else
       throw "SCHEMA SHOULD BE A MAP"
     end
   end
 
-  defp installing_getters_and_setters(my_schema, lista_fields) do
+  defp installing_getters_and_setters(my_schema, custom_types, lista_fields) do
     Map.keys(my_schema)
     |> Enum.map(fn(field) ->
       type = get_in(my_schema, [field])
@@ -25,12 +25,12 @@ defmodule MapSchema.PropMethods do
 
       if is_map(type) do
         sub_schema = type
-        installing_getters_and_setters(sub_schema, lista_fields)
+        installing_getters_and_setters(sub_schema, custom_types, lista_fields)
       else
         getters = Gets.install(lista_fields, type)
         #puts = Puts.install(lista_fields, type)
 
-        puts = PutsTypes.install(lista_fields, type)
+        puts = PutsTypes.install(custom_types, lista_fields, type )
         muts = Muts.install(lista_fields, type)
 
         [getters, puts, muts]

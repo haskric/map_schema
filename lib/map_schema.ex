@@ -20,7 +20,7 @@ defmodule MapSchema do
 
     base_methods = Base.install(schema)
     custom_types_methods = CustomTypes.install(custom_types)
-    properties_methods = PropMethods.install(schema)
+    properties_methods = PropMethods.install(schema, custom_types)
 
     put_partial = PutPartial.install()
     json_methods = JsonEncoding.install()
