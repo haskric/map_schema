@@ -2,8 +2,12 @@
 
 It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number and include **json encoding** using the popular Jason library. 
 
-
+**Next release**
 Note: Now, I am working in improve it. You can use it but return here for check updates.
+
+[x] Custom Types (with casting,validation...)
+[ ] Improve documentation
+[ ] More examples
 
 ## Installation
 
