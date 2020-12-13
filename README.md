@@ -2,6 +2,9 @@
 
 It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number and include **json encoding** using the popular Jason library. 
 
+
+Note: Now, I am working in improve it. You can use it but return here for check updates.
+
 ## Installation
 
 ```elixir
@@ -12,6 +15,7 @@ def deps do
 end
 ```
 
+
 ## Usage
 
 The map_schema will include in the module multiple methods
@@ -20,7 +24,9 @@ then it´s simple create your schema, add ex_doc in mix, and use ``mix docs`` an
 
 ```elixir
 defmodule MapSchema.Examples.Person do
-  @moduledoc false
+  @moduledoc """
+  Example of Person Model Map using MapSchema
+  """
   use MapSchema,
     schema: %{
         "name" => :string,
@@ -48,11 +54,11 @@ end
 ### Gets and Puts functions
 ```elixir
   test "Example get and put usage" do
-    person = Person.new()
-      |> Person.put_name("Leo")
-      |> Person.put_surname("Messi")
-      |> Person.put_country("Argentina")
-      |> Person.put_age(33)
+    person = Person.new() # %{}
+      |> Person.put_name("Leo") # %{"name" => "Leo"}
+      |> Person.put_surname("Messi") # %{"name" => "Leo", "surname" => "Messi" }
+      |> Person.put_country("Argentina") # %{"name" => "Leo", "surname" => "Messi", "country" => "Argentina" }
+      |> Person.put_age(33) # %{"name" => "Leo", "surname" => "Messi", "country" => "Argentina", "age" => 33 }
 
     assert Person.get_name(person) == "Leo"
     assert Person.get_surname(person) == "Messi"
@@ -161,8 +167,19 @@ Note:
 
 
 
+### Features
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/map_schema](https://hexdocs.pm/map_schema).
+- Simple definition of data schema
+  
+  A simple map %{} and ;)
+- Implicit types check and casting
 
+  Forgot the type checks and casting
+- Compatible with Json.
+
+  Perfect, for APIs, webapps... so on.
+- Independent data of module
+
+  A map would can be compatible with multiples schemas always that it follow each schema types.
+
+... and more now working ...
