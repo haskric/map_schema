@@ -38,10 +38,13 @@ defmodule MapSchema.Examples.Person do
           "email" => :string,
           "phone" => :string,
           "others" => :any
-        }
+        },
+        "friends" => :list_people,
+        "family" => :list_people
     },
     custom_types: [
-      MapSchema.Examples.CustomTypeLang
+      MapSchema.Examples.CustomTypeLang,
+      MapSchema.Examples.CustomTypeRecursive.ListPeople
     ]
     
 end
@@ -192,7 +195,35 @@ Note:
 | :any | NONE |
 | in othercase | NONE |
 
+### Recursive Custom Type example of use
 
+```elixir
+  test "Example using recursive list of people" do
+    person_neymar = Person.new()
+      |> Person.put_name("Neymar")
+
+    person_messi = Person.new()
+      |> Person.put_name("Leo")
+      |> Person.put_surname("Messi")
+      |> Person.put_friends([
+        %{"name"=>"Suarez"},
+        person_neymar
+      ])
+      |> Person.put_family([
+        %{"name"=>"Antonella"}
+      ])
+
+    assert Person.get_name(person_messi) == "Leo"
+    assert Person.get_surname(person_messi) == "Messi"
+    assert Person.get_friends(person_messi) == [
+      %{"name"=>"Suarez"},
+      person_neymar
+    ]
+    assert Person.get_family(person_messi) == [
+      %{"name"=>"Antonella"}
+    ]
+  end
+```
 ### Custom Type example
 
 ```elixir

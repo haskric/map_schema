@@ -13,10 +13,14 @@ defmodule MapSchema.Examples.Person do
           "email" => :string,
           "phone" => :string,
           "others" => :any
-        }
+        },
+        "friends" => :list_people,
+        "family" => :list_people
+
     },
     custom_types: [
-      MapSchema.Examples.CustomTypeLang
+      MapSchema.Examples.CustomTypeLang,
+      MapSchema.Examples.CustomTypeRecursive.ListPeople
     ]
 
 end
