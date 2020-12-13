@@ -1,4 +1,8 @@
 defmodule MapSchema.CustomType do
+  @moduledoc """
+  Definition of MapSchema CustomType
+  """
+
 
   @callback name :: atom
   @callback nested? :: true | false

@@ -5,11 +5,6 @@ defmodule MapSchema.Methods.Puts do
 
   alias MapSchema.DefaultTypes
 
-  def generic_put(mapa, lista_fields, value) do
-    mapa
-    |> init_nested_maps(lista_fields)
-    |> put_in(lista_fields, value)
-  end
 
   def generic_put_custom_type(module_custom_type, type, mapa, lista_fields, value) do
     case DefaultTypes.execute_autocast_typechecking(module_custom_type, value) do
@@ -21,19 +16,13 @@ defmodule MapSchema.Methods.Puts do
     end
   end
 
-  def generic_put_with_typecheking(module, type, mapa, lista_fields, value) do
-    module_custom_type = DefaultTypes.get_custom_type_module(module, type)
-    case DefaultTypes.cast_value(module_custom_type, value) do
-      :error -> throw "CASTING ERROR #{type}"
-      after_cast_value ->
-        if DefaultTypes.check_is_valid?(module_custom_type, after_cast_value) do
-          mapa
-          |> generic_put(lista_fields, after_cast_value)
-        else
-          throw "TYPE ERROR #{type}"
-        end
-    end
+
+  defp generic_put(mapa, lista_fields, value) do
+    mapa
+    |> init_nested_maps(lista_fields)
+    |> put_in(lista_fields, value)
   end
+
 
   defp init_nested_maps(mapa, []) do
     mapa

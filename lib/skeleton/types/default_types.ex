@@ -101,4 +101,22 @@ defmodule MapSchema.DefaultTypes do
   end
 
 
+
+  @doc """
+  The field of schema can save flexible content, if the user say that it use
+  a :map, :list, or any custom type. In this cases we wont check the type of data.
+
+  """
+  def is_flexible_nested?(_custom_types, type) when is_map(type) do
+    false
+  end
+  def is_flexible_nested?(custom_types, type) do
+    case get_custom_type_module(custom_types, type) do
+      nil -> false
+      module_custom_type ->
+        apply(module_custom_type, :nested?, [])
+    end
+  end
+
+
 end
