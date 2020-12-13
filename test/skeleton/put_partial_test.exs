@@ -30,4 +30,19 @@ defmodule MapSchema.PutPartialTest do
     assert Person.get_contact_others(person) == %{"social"=> "ric"}
   end
 
+  test "Using put with exception and put_ifmatch without exception" do
+    try do
+      Person.new()
+      |> Person.put(%{"name" => "ric", "not_exist_field"=> "something"})
+
+      assert false
+    catch
+      _e ->
+        person = Person.new()
+          |> Person.put_ifmatch(%{"name" => "ric", "not_exist_field"=> "something"})
+
+        assert Person.get_name(person) == "ric"
+    end
+  end
+
 end
