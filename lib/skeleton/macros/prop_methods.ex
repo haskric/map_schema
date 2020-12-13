@@ -6,14 +6,22 @@ defmodule MapSchema.PropMethods do
   alias MapSchema.Gets
   alias MapSchema.Muts
   alias MapSchema.PutsTypes
-  alias MapSchema.Puts
 
-  def install(schema,custom_types) do
+
+  def install(schema, custom_types) do
+    case get_param_schema(schema) do
+      :error -> throw "SCHEMA SHOULD BE A MAP"
+      my_schema ->
+        installing_getters_and_setters(my_schema, custom_types, [])
+    end
+  end
+
+  defp get_param_schema(schema) do
     {my_schema, []} =  Code.eval_quoted(schema)
     if is_map(my_schema) do
-      installing_getters_and_setters(my_schema, custom_types, [])
+      my_schema
     else
-      throw "SCHEMA SHOULD BE A MAP"
+      :error
     end
   end
 
@@ -28,8 +36,6 @@ defmodule MapSchema.PropMethods do
         installing_getters_and_setters(sub_schema, custom_types, lista_fields)
       else
         getters = Gets.install(lista_fields, type)
-        #puts = Puts.install(lista_fields, type)
-
         puts = PutsTypes.install(custom_types, lista_fields, type )
         muts = Muts.install(lista_fields, type)
 

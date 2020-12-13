@@ -15,13 +15,12 @@ defmodule MapSchema.PutPartial do
 
   """
 
-  alias MapSchema.Methods.PutPartial
   alias MapSchema.Methods.PutPartialTypes
-  def install() do
+  def install do
     install_put_partial()
   end
 
-  defp install_put_partial() do
+  defp install_put_partial do
     quote do
       @doc """
       Put a new value in each field of the update map,  in the field of the object.

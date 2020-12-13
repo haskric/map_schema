@@ -6,8 +6,8 @@ defmodule MapSchema.PutsTypes do
 
   """
   alias MapSchema.Methods.Puts
-  alias MapSchema.Utils
   alias MapSchema.Types
+  alias MapSchema.Utils
 
   def install(custom_types, lista_fields, type) do
 
@@ -43,9 +43,8 @@ defmodule MapSchema.PutsTypes do
 
       """
       def unquote(name_function)(var!(mapa), var!(value)) do
-        #Puts.generic_put_with_typecheking(__MODULE__, unquote(type), var!(mapa), unquote(lista_fields), var!(value))
-
-        Puts.generic_put_custom_type(unquote(module_custom_type), unquote(type), var!(mapa), unquote(lista_fields), var!(value))
+        unquote(module_custom_type)
+        |> Puts.generic_put_custom_type(unquote(type), var!(mapa), unquote(lista_fields), var!(value))
       end
     end
   end
@@ -54,7 +53,8 @@ defmodule MapSchema.PutsTypes do
     field = Utils.get_field_name(lista_fields)
     module_custom_type = Types.get_custom_type_module(custom_types, type)
 
-    quote bind_quoted: [module_custom_type: module_custom_type , field: field,  lista_fields: lista_fields, type: type] do
+    quote bind_quoted: [module_custom_type: module_custom_type , field: field,
+    lista_fields: lista_fields, type: type] do
       name_function = String.to_atom("put_" <> field)
       @doc """
       Put a new value in #{field} field.
@@ -63,8 +63,8 @@ defmodule MapSchema.PutsTypes do
       Remember that #{field} is #{type} type.
       """
       def unquote(name_function)(var!(mapa), var!(value)) do
-        #Puts.generic_put_with_typecheking(__MODULE__, unquote(type), var!(mapa), unquote(lista_fields), var!(value))
-        Puts.generic_put_custom_type(unquote(module_custom_type), unquote(type), var!(mapa), unquote(lista_fields), var!(value))
+        unquote(module_custom_type)
+        |> Puts.generic_put_custom_type(unquote(type), var!(mapa), unquote(lista_fields), var!(value))
       end
     end
   end

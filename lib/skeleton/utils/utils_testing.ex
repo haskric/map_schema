@@ -8,8 +8,6 @@ defmodule MapSchema.Utils.Testing do
     |> hd
   end
 
-
-
   defp get_tests_by_type(type) do
     case type do
       :string_to_integer ->

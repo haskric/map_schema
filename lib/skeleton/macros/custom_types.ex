@@ -3,7 +3,6 @@ defmodule MapSchema.CustomTypes do
   The custom types install
 
   """
-  alias MapSchema.DefaultTypes
 
   def install(custom_types) do
     install_types_functions(custom_types)
@@ -18,7 +17,6 @@ defmodule MapSchema.CustomTypes do
       def unquote(:schema_types)() do
         unquote(Macro.escape(custom_types))
       end
-
 
       @doc """
       Get the module of type by name

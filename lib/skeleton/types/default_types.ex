@@ -31,7 +31,6 @@ defmodule MapSchema.DefaultTypes do
     ]
   end
 
-
   def build_map_custom_types do
     build_map_custom_types([])
   end
@@ -44,8 +43,5 @@ defmodule MapSchema.DefaultTypes do
       |> Map.put(key, module)
     end)
   end
-
-
-
 
 end

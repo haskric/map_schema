@@ -1,5 +1,7 @@
 defmodule MapSchema.Types do
-
+  @moduledoc """
+  MapSchema.Types
+  """
 
   def execute_autocast_typechecking(module_custom_type, value) do
     case cast_value(module_custom_type, value) do
@@ -12,7 +14,6 @@ defmodule MapSchema.Types do
         end
     end
   end
-
 
   def get_custom_type_module(custom_types, type) when is_map(custom_types) do
     custom_types
@@ -54,8 +55,6 @@ defmodule MapSchema.Types do
     |> Enum.take_random(1)
     |> hd
   end
-
-
 
   @doc """
   The field of schema can save flexible content, if the user say that it use

@@ -5,7 +5,6 @@ defmodule MapSchema.Methods.Puts do
 
   alias MapSchema.Types
 
-
   def generic_put_custom_type(module_custom_type, type, mapa, lista_fields, value) do
     case Types.execute_autocast_typechecking(module_custom_type, value) do
       {:ok, after_cast_value} ->
@@ -16,13 +15,11 @@ defmodule MapSchema.Methods.Puts do
     end
   end
 
-
   defp generic_put(mapa, lista_fields, value) do
     mapa
     |> init_nested_maps(lista_fields)
     |> put_in(lista_fields, value)
   end
-
 
   defp init_nested_maps(mapa, []) do
     mapa
@@ -33,7 +30,7 @@ defmodule MapSchema.Methods.Puts do
   defp init_nested_maps(mapa, lista_fields) do
     lista_fields
     |> Enum.drop(-1)
-    |> Enum.reduce(mapa, fn(parent_field, acc_mapa)->
+    |> Enum.reduce(mapa, fn(parent_field, acc_mapa) ->
       if is_nil(Map.get(acc_mapa, parent_field)) do
         acc_mapa
         |> Map.put(parent_field, %{})

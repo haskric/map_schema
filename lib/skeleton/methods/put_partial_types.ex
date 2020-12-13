@@ -3,8 +3,8 @@ defmodule MapSchema.Methods.PutPartialTypes do
   The module have the internal functionality of the methods put_partial
 
   """
-  alias MapSchema.Utils
   alias MapSchema.Types
+  alias MapSchema.Utils
 
   def put(module, map, map_update, custom_types) do
     schema = apply(module, :schema, [])

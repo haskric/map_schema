@@ -3,8 +3,8 @@ defmodule MapSchema.CustomType do
   Definition of MapSchema CustomType
   """
 
-
   @callback name :: atom
+
   @callback nested? :: true | false
 
   @callback cast(value :: any) :: any | :error
