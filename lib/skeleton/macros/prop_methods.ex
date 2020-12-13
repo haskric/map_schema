@@ -7,7 +7,6 @@ defmodule MapSchema.PropMethods do
   alias MapSchema.Muts
   alias MapSchema.PutsTypes
 
-
   def install(schema, custom_types) do
     case get_param_schema(schema) do
       :error -> throw "SCHEMA SHOULD BE A MAP"

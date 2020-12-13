@@ -6,12 +6,10 @@ defmodule MapSchema do
   alias MapSchema.Base
   alias MapSchema.Check
   alias MapSchema.CustomTypes
+  alias MapSchema.DefaultTypes
   alias MapSchema.JsonEncoding
   alias MapSchema.PropMethods
   alias MapSchema.PutPartial
-
-  alias MapSchema.DefaultTypes
-
 
   defmacro __using__(opts) do
     schema = Keyword.get(opts, :schema)

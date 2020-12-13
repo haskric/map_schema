@@ -14,8 +14,8 @@ defmodule MapSchema.PutPartial do
       assert Person.get_age(person) == 29
 
   """
-
   alias MapSchema.Methods.PutPartialTypes
+
   def install do
     install_put_partial()
   end

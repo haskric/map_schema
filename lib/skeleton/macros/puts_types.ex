@@ -10,13 +10,11 @@ defmodule MapSchema.PutsTypes do
   alias MapSchema.Utils
 
   def install(custom_types, lista_fields, type) do
-
     if Types.have_doctest?(custom_types, type)  do
       build_puts_with_doctest(custom_types, lista_fields, type)
     else
       build_puts(custom_types, lista_fields, type)
     end
-
   end
 
   defp build_puts_with_doctest(custom_types, lista_fields, type) do
