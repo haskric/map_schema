@@ -11,7 +11,6 @@ defmodule MapSchema do
   alias MapSchema.PropMethods
   alias MapSchema.PutPartial
 
-
   defmacro __using__(opts) do
     schema = Keyword.get(opts, :schema)
     list_custom_types = Keyword.get(opts, :custom_types)

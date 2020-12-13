@@ -3,7 +3,7 @@
 It´s a Simple, Agile, Map schema in Elixir **with types check** , with **integer and float number autocasting** of string to number, let define **custom types with casting and validation** and include **json encoding** using the popular Jason library. 
 
 **Next release**
-Note: Now, I am working in improve it. You can use it but return here for check updates.
+Note: Now, I am working in improve it. You can use it but return here for check updates and documentation. 
 
 ## Installation
 
@@ -85,7 +85,9 @@ end
 | get_contact_phone(map)      | put_contact_phone(map,value)  |
 | get_contact_others(map)      | put_contact_others(map,value)  |
 
-### General Put
+### General Put and Put_ifmatch
+
+You can update many fields using a general put, every field will be cast and type check before of update. But if you try put a field that dont exist in the schema the method put will return a exception because you tried break the schema. Well there are a other option, you can use `put_ifmatch` that if a field dont exist in the schema it will omited.
 
 ```elixir
   test "Example general put function" do
@@ -100,6 +102,23 @@ end
   end
 ```
 
+```elixir
+  test "Using put with exception and put_ifmatch without exception" do
+    try do
+      Person.new()
+      |> Person.put(%{"name" => "ric", "not_exist_field"=> "something"})
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.not_exist_field_in_schema("not_exist_field")
+        person = Person.new()
+          |> Person.put_ifmatch(%{"name" => "ric", "not_exist_field"=> "something"})
+
+        assert Person.get_name(person) == "ric"
+    end
+  end
+```
 
 ### Mutation functions
 
