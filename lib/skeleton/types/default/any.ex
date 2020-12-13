@@ -8,6 +8,15 @@ defmodule MapSchema.DefaultTypes.MSchemaAny do
   def name, do: :any
   def nested?, do: true
 
+  @doc """
+  Always the same
+
+  ## Examples
+
+      iex> alias MapSchema.DefaultTypes.MSchemaAny
+      iex> MSchemaAny.cast(["1","2"])
+      ["1","2"]
+  """
   @spec cast(any) :: any
   def cast(value) do
     value
@@ -32,6 +41,15 @@ defmodule MapSchema.DefaultTypes.MSchemaAny do
     true
   end
 
+  @doc """
+  Always the same
+
+  ## Examples
+
+      iex> alias MapSchema.DefaultTypes.MSchemaAny
+      iex> MSchemaAny.doctest_values()
+      [{"\\"its_anything\\"","\\"its_anything\\""}]
+  """
   @spec doctest_values :: [{any, any}]
   def doctest_values do
     ["\"its_anything\""]

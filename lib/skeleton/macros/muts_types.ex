@@ -18,13 +18,11 @@ defmodule MapSchema.MutsTypes do
 
   defp build_muts_with_doctest(custom_types, lista_fields, type) do
     field = Utils.get_field_name(lista_fields)
-    guard = Utils.get_guard_by_type(type)
 
-    module_custom_type = Types.get_custom_type_module(custom_types, type)
     {test_value, test_expected} = Types.get_doctest(custom_types, type)
 
-    quote bind_quoted: [module_custom_type: module_custom_type , field: field,  type: type ,
-    test_value: test_value ,  test_expected: test_expected,  guard: guard] do
+    quote bind_quoted: [field: field,  type: type ,
+    test_value: test_value ,  test_expected: test_expected] do
       name_function_get = String.to_atom("get_" <> field)
       name_function_put = String.to_atom("put_" <> field)
       name_function_mut = String.to_atom("mut_" <> field)

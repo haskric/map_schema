@@ -44,6 +44,10 @@ defmodule MapSchema.Types do
     get_doctest(custom_types, type) != :error
   end
 
+  @doc """
+  Take a type of data and returns a tuple `{testing_value, testing_result}` with the example values
+  that we used in doctest.
+  """
   def get_doctest(custom_types, type) when is_map(custom_types) do
     module_custom_type = get_custom_type_module(custom_types, type)
 

@@ -8,6 +8,7 @@ defmodule MapSchema.DefaultTypes.DoctestTest do
   doctest MapSchema.DefaultTypes.MSchemaBool
   doctest MapSchema.DefaultTypes.MSchemaMap
   doctest MapSchema.DefaultTypes.MSchemaList
+  doctest MapSchema.DefaultTypes.MSchemaAny
 
   doctest MapSchema.DefaultTypes.MSchemaStringToInteger
   doctest MapSchema.DefaultTypes.MSchemaStringToFloat
