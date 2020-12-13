@@ -20,7 +20,7 @@ defmodule MapSchema.Types do
     |> Map.get(type)
   end
 
-  def cast_value(nil, value), do: value
+  #def cast_value(nil, value), do: value
   def cast_value(module_custom_type, value) do
     apply(module_custom_type , :cast, [value])
   catch

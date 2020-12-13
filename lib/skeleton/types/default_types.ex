@@ -28,6 +28,7 @@ defmodule MapSchema.DefaultTypes do
       MapSchema.DefaultTypes.MSchemaBool,
       MapSchema.DefaultTypes.MSchemaMap,
       MapSchema.DefaultTypes.MSchemaList,
+      MapSchema.DefaultTypes.MSchemaAny,
       MapSchema.DefaultTypes.MSchemaStringToInteger,
       MapSchema.DefaultTypes.MSchemaStringToFloat
     ]

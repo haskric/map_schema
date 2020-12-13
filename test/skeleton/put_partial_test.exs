@@ -36,14 +36,17 @@ defmodule MapSchema.PutPartialTest do
       @moduledoc false
       use MapSchema,
         schema: %{
-          "flex_nested" => :any
+          "flex_nested" => :any,
+          "flex_second" => :any
         }
     end
 
     item = TestingNested.new()
       |> TestingNested.put_flex_nested(%{hello: "world"})
+      |> TestingNested.put(%{"flex_second" => %{hola: "mundo"}})
 
     assert TestingNested.get_flex_nested(item) == %{hello: "world"}
+    assert TestingNested.get_flex_second(item) == %{hola: "mundo"}
 end
 
   test "Using put with exception and put_ifmatch without exception" do
