@@ -7,6 +7,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
   alias MapSchema.Utils
 
   alias MapSchema.Methods.PutPartialTypes
+  alias MapSchema.Exceptions
 
   defstruct module: nil,
             map: nil,
@@ -53,7 +54,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
       cond do
         type == nil ->
           if action.emit_exception do
-            throw("Error schema: the field " <> field <> " dont exit in schema")
+            Exceptions.throw_not_exist_field_in_schema(field)
           else
             acc_map
           end

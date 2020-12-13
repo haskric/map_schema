@@ -3,17 +3,27 @@ defmodule MapSchema.Methods.Puts do
   The module have the internal functionality of the methods puts
   """
 
+  alias MapSchema.Exceptions
   alias MapSchema.Types
+  alias MapSchema.Utils
+
+
+
 
   def generic_put_custom_type(module_custom_type, type, mapa, lista_fields, value) do
     case Types.execute_autocast_typechecking(module_custom_type, value) do
       {:ok, after_cast_value} ->
         mapa
         |> generic_put(lista_fields, after_cast_value)
-      {:error_cast, _} -> throw "CASTING ERROR #{type}"
-      {:error_type, _} -> throw "TYPE ERROR #{type}"
+      {:error_cast, _} ->
+        Utils.get_field_name(lista_fields)
+        |> Exceptions.throw_cast_error(type)
+      {:error_type, _} ->
+        Utils.get_field_name(lista_fields)
+        |> Exceptions.throw_type_error(type)
     end
   end
+
 
   defp generic_put(mapa, lista_fields, value) do
     mapa
