@@ -2,7 +2,6 @@ defmodule MapSchema.Types do
   @moduledoc """
   MapSchema.Types
   """
-  alias MapSchema.Exceptions
   alias MapSchema.Types.Default
 
   def execute_autocast_typechecking(module_custom_type, value) do

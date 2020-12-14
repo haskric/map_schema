@@ -19,7 +19,7 @@ end
 
 The map_schema will include in the module multiple methods
 with documentation even with some doctest examples... ;) 
-then it´s simple create your schema, add ex_doc in mix, and use ``mix docs`` and your team will can see all methods that your module will have thanks the "witchcraft" of elixir macros, all ready to use it.
+then it´s simple create your schema, add ``ex_doc`` in mix, and use ``mix docs`` and your team will can see all methods that your module will have thanks the "witchcraft" of elixir macros, all ready to use it.
 
 ```elixir
 defmodule MapSchema.Examples.Person do
@@ -145,7 +145,7 @@ You can update many fields using a general put, every field will be cast and typ
 | mut_contact_others(map,fn_mut) | Change the value using fn_mut |
 
 
-### JSON ENCONDING 
+### Json Encoding
 
 ```elixir
   test "Example of json encoding" do
@@ -173,7 +173,6 @@ You can update many fields using a general put, every field will be cast and typ
 | json_encode(mapa, json) | Json to Existing Map (Checking typing, and cast) |
 
 
-
 ### Table of Types
 
 Note:
@@ -187,11 +186,11 @@ Note:
 | :string_to_integer         | :is_integer         |
 | :string_to_float      | :is_float             |
 | :string | :is_bitstring |
-| :bool | :is_boolean |
-| :boolean | :is_boolean |
-| :map | :is_map |
+| :bool | :is_boolean |
+| :boolean | :is_boolean |
+| :map | :is_map |
 | :list | :is_list |
-| :any | NONE |
+| :any | NONE |
 | in othercase | NONE |
 
 ### Recursive Custom Type example of use
@@ -344,3 +343,70 @@ end
   This custom data types let you define the rules of schema.
 
 ... and more now working ...
+
+
+## Only in Versions > 0.2.2
+
+### Atomize Schema (Dot Sintax)
+
+```elixir
+defmodule MapSchema.Examples.Employee do
+  use MapSchema,
+    atomize: true,
+    schema: %{
+        :name => :string,
+        :surname => :string,
+        :contact => %{
+          :email => :string,
+        }
+    },
+    custom_types: []
+end
+```
+
+In the next release you will can active atomize mode in your schemas, this can be problematic with json_encoding then we need say the schema that you want use it. It´s important this because let us use a doc sintax to access easy the information.
+
+
+```elixir
+  test "New employee get with dot sintax" do
+    emp = Employee.new()
+      |> Employee.put_name("Ric")
+      |> Employee.put_surname("H")
+      |> Employee.put_contact_email("nested@email.com")
+
+    assert emp.name == "Ric"
+    assert Employee.get_name(emp) == "Ric"
+
+    assert emp.surname == "H"
+    assert Employee.get_surname(emp) == "H"
+
+    assert emp.contact.email == "nested@email.com"
+    assert Employee.get_contact_email(emp) == "nested@email.com"
+  end
+```
+
+### Schema like a CustomType 
+
+The schemas can be type for other schemas, only it´s require define the name of type with ``type_name`` and if you need a list of can define other type ``type_list_name``. Of course this let a basic functionality but always you can build your custom type for your schema.
+
+In the example you can see the modules of custom types "... Item.Type", "... Item.TypeList" where you need include the type or the typelist that you want use. 
+
+```elixir
+defmodule Item do
+  @moduledoc false
+  ## Example of recursive type
+  use MapSchema,
+    type_name: "<item>",
+    type_list_name: "<list_items>",
+    schema: %{
+      "name" => :string,
+      "list_items" => "<list_items>"
+    },
+    custom_types: %{
+      "<item>" => MapSchema.DefineTypeTest.Item.Type,
+      "<list_items>" => MapSchema.DefineTypeTest.Item.TypeList
+    }
+end
+```
+
+ 
