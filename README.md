@@ -15,7 +15,6 @@ def deps do
 end
 ```
 
-
 ## Usage
 
 The map_schema will include in the module multiple methods

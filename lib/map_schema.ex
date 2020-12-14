@@ -5,7 +5,6 @@ defmodule MapSchema do
 
   alias MapSchema.Macros.Base
   alias MapSchema.Macros.Check
-  #alias MapSchema.CustomTypes
   alias MapSchema.DefaultTypes
   alias MapSchema.Macros.JsonEncoding
   alias MapSchema.Macros.PropMethods
