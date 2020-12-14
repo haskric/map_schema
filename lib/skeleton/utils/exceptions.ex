@@ -60,14 +60,6 @@ defmodule MapSchema.Exceptions do
   end
 
 
-
-  def error_set_of_doctest_cannot_be_empty do
-    "Definition of custom type error: the set of testing can´t be empty. Please complete it for have free test."
-  end
-  def throw_error_set_of_doctest_cannot_be_empty do
-    throw(error_set_of_doctest_cannot_be_empty())
-  end
-
   def config_atomize_schema(field) do
     "Schema caution: The #{field} is atom but the atomize flag isnt active. You can have problems with json encoding."
   end

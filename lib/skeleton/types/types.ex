@@ -107,7 +107,6 @@ defmodule MapSchema.Types do
   end
 
   defp choise_random_test([]) do
-    #Exceptions.throw_error_set_of_doctest_cannot_be_empty()
     :error
   end
   defp choise_random_test(set_tests) do
