@@ -38,4 +38,20 @@ defmodule MapSchema.Exceptions do
     throw(config_error_schema_should_be_map())
   end
 
+  def config_error_atomize_schema do
+    "MapSchema error config: atomize should be a boolean. Review docs before of active."
+  end
+  def throw_config_error_atomize_schema do
+    throw(config_error_atomize_schema())
+  end
+
+  def config_atomize_schema(field) do
+    "Schema caution: The #{field} is atom but the atomize flag isnt active. You can have problems with json encoding."
+  end
+  def throw_warn_config_atomize_schema(field) do
+    #IO.warn(config_atomize_schema(field))
+    # Sorry, strict mode
+    throw(config_atomize_schema(field))
+  end
+
 end

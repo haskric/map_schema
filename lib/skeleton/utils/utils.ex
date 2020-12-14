@@ -1,5 +1,6 @@
 defmodule MapSchema.Utils do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   The module have the utils functions.
   """
 

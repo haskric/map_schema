@@ -26,10 +26,7 @@ defmodule MapSchema.AtomizedSchemaTest do
       |> Employee.put_contact_email("nested@email.com")
 
     json = Employee.json_encode(emp)
-
-    #IO.inspect json
-    #result = Employee.json_decode(json)
-    #IO.inspect result
+    assert Employee.json_decode(json) == emp
   end
 
 end
