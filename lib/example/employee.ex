@@ -1,6 +1,6 @@
 defmodule MapSchema.Examples.Employee do
   @moduledoc """
-  Employee example
+  Person example
   """
   use MapSchema,
     atomize: true,

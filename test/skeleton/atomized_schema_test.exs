@@ -29,6 +29,7 @@ defmodule MapSchema.AtomizedSchemaTest do
     assert Employee.json_decode(json) == emp
   end
 
+
   test "Checking compatible multiple schemas" do
     defmodule ClassicMode do
       @moduledoc false
