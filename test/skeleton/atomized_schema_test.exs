@@ -26,10 +26,43 @@ defmodule MapSchema.AtomizedSchemaTest do
       |> Employee.put_contact_email("nested@email.com")
 
     json = Employee.json_encode(emp)
+    assert Employee.json_decode(json) == emp
+  end
 
-    #IO.inspect json
-    #result = Employee.json_decode(json)
-    #IO.inspect result
+
+  test "Checking compatible multiple schemas" do
+    defmodule ClassicMode do
+      @moduledoc false
+      use MapSchema,
+        schema: %{
+            "field1" => :string
+        },
+        custom_types: []
+
+    end
+
+    defmodule AtomizeWithNestedWithout do
+      @moduledoc false
+      use MapSchema,
+        atomize: true,
+        schema: %{
+            :nested_without_atoms => :any
+        },
+        custom_types: []
+
+    end
+
+    nested = ClassicMode.new()
+      |> ClassicMode.put_field1("hello")
+
+    container = AtomizeWithNestedWithout.new()
+      |> AtomizeWithNestedWithout.put_nested_without_atoms(nested)
+
+    assert container.nested_without_atoms == nested
+    assert ClassicMode.get_field1(container.nested_without_atoms) == "hello"
+
+    json = AtomizeWithNestedWithout.json_encode(container)
+    assert AtomizeWithNestedWithout.json_decode(json) == container
   end
 
 end

@@ -3,6 +3,8 @@ defmodule MapSchema.Types do
   MapSchema.Types
   """
 
+  alias MapSchema.Exceptions
+
   def execute_autocast_typechecking(module_custom_type, value) do
     case cast_value(module_custom_type, value) do
       :error -> {:error_cast, nil}
@@ -57,11 +59,15 @@ defmodule MapSchema.Types do
         |> choise_random_test()
       catch
         _e ->
+          ## ;)
           :error
       end
     end
   end
 
+  defp choise_random_test([]) do
+    Exceptions.throw_error_set_of_doctest_cannot_be_empty()
+  end
   defp choise_random_test(set_tests) do
     set_tests
     |> Enum.take_random(1)

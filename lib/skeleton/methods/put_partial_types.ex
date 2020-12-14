@@ -4,6 +4,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
   The module have the internal functionality of the methods put_partial
 
   """
+  alias MapSchema.Atomize
   alias MapSchema.Exceptions
   alias MapSchema.Methods.PutPartialTypes
   alias MapSchema.Types
@@ -15,21 +16,22 @@ defmodule MapSchema.Methods.PutPartialTypes do
             custom_types: nil,
             schema: nil,
             lista_fields: [],
-            emit_exception: true
+            emit_exception: true,
+            flag_atomize: false
 
-  def put(module, map, map_update, custom_types) do
+  def put(module, map, map_update, custom_types, flag_atomize) do
     emit_exception = true
-    action = action_contructor(module, map, map_update, custom_types, emit_exception)
+    action = action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize)
     execute_put(action)
   end
 
-  def put_ifmatch(module, map, map_update, custom_types) do
+  def put_ifmatch(module, map, map_update, custom_types, flag_atomize) do
     emit_exception = false
-    action = action_contructor(module, map, map_update, custom_types, emit_exception)
+    action = action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize)
     execute_put(action)
   end
 
-  defp action_contructor(module, map, map_update, custom_types, emit_exception) do
+  defp action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize) do
     schema = apply(module, :schema, [])
 
     %PutPartialTypes{
@@ -39,15 +41,18 @@ defmodule MapSchema.Methods.PutPartialTypes do
       custom_types: custom_types,
       schema: schema,
       lista_fields: [],
-      emit_exception: emit_exception
+      emit_exception: emit_exception,
+      flag_atomize: flag_atomize
     }
   end
 
   def execute_put(action) do
     action.map_update
     |> Map.keys()
-    |> Enum.reduce(action.map, fn(field, acc_map) ->
-      valor = get_in(action.map_update, [field])
+    |> Enum.reduce(action.map, fn(upmap_field, acc_map) ->
+      field = Atomize.process_field(upmap_field, action.flag_atomize)
+
+      valor = get_in(action.map_update, [upmap_field])
       type = get_in(action.schema, [field])
       lista_fields = action.lista_fields ++ [field]
 
@@ -63,7 +68,7 @@ defmodule MapSchema.Methods.PutPartialTypes do
           |> call_put_of_field(action.module, lista_fields, valor)
         is_map(type) ->
           sub_schema = get_in(action.schema, [field])
-          sub_map_update = get_in(action.map_update, [field])
+          sub_map_update = get_in(action.map_update, [upmap_field])
 
           action
           |> update_action(%{

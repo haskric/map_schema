@@ -40,8 +40,9 @@ defmodule MapSchema.Macros.PutPartial do
       If a field dont exist in the schema throw exception. (If you need be less strict you can use `put_ifmatch/1` or `put_ifmatch/2`)
       """
       def unquote(:put)(var!(mapa), var!(map_update)) when is_map(var!(map_update)) do
+        var!(atomize) = schema_is_atomize?()
         var!(custom_types) = schema_types()
-        PutPartialTypes.put(__MODULE__, var!(mapa), var!(map_update), var!(custom_types))
+        PutPartialTypes.put(__MODULE__, var!(mapa), var!(map_update), var!(custom_types), var!(atomize))
       end
 
       @doc """
@@ -59,8 +60,9 @@ defmodule MapSchema.Macros.PutPartial do
       But before of update the values always will be check the type.
       """
       def unquote(:put_ifmatch)(var!(mapa), var!(map_update)) when is_map(var!(map_update)) do
+        var!(atomize) = schema_is_atomize?()
         var!(custom_types) = schema_types()
-        PutPartialTypes.put_ifmatch(__MODULE__, var!(mapa), var!(map_update), var!(custom_types))
+        PutPartialTypes.put_ifmatch(__MODULE__, var!(mapa), var!(map_update), var!(custom_types), var!(atomize))
       end
 
     end

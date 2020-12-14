@@ -3,21 +3,27 @@ defmodule MapSchema do
   Macro module of `MapSchema`.
   """
 
+  alias MapSchema.Atomize
+  alias MapSchema.DefaultTypes
+
+  alias MapSchema.Macros.AtomizeMode
   alias MapSchema.Macros.Base
   alias MapSchema.Macros.Check
-  alias MapSchema.DefaultTypes
+  alias MapSchema.Macros.CustomTypes
   alias MapSchema.Macros.JsonEncoding
   alias MapSchema.Macros.PropMethods
   alias MapSchema.Macros.PutPartial
 
-  alias MapSchema.Macros.CustomTypes
-
   defmacro __using__(opts) do
     schema = Keyword.get(opts, :schema)
     list_custom_types = Keyword.get(opts, :custom_types)
+    flag_atomize = Keyword.get(opts, :atomize)
+
     custom_types = DefaultTypes.param_config(list_custom_types)
+    flag_atomize = Atomize.param_config(flag_atomize)
 
     base_methods = Base.install(schema)
+    atomize_methods = AtomizeMode.install(flag_atomize)
     custom_types_methods = CustomTypes.install(custom_types)
     properties_methods = PropMethods.install(schema, custom_types)
 
@@ -27,6 +33,7 @@ defmodule MapSchema do
 
     [
       base_methods,
+      atomize_methods,
       custom_types_methods,
       properties_methods,
       put_partial,

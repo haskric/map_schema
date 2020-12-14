@@ -3,6 +3,7 @@ defmodule MapSchema.Examples.Employee do
   Person example
   """
   use MapSchema,
+    atomize: true,
     schema: %{
         :name => :string,
         :surname => :string,
