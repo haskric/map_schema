@@ -23,7 +23,7 @@ defmodule MapSchema.DefinitionMapSchemaTest do
       defmodule CustomTypesInvalid do
         @moduledoc false
         use MapSchema,
-          custom_types: %{},
+          custom_types: :something_wrong,
           schema: %{
             "name" => :string
           }
@@ -32,7 +32,7 @@ defmodule MapSchema.DefinitionMapSchemaTest do
       assert false
     catch
       e ->
-        assert e == Exceptions.config_error_custom_types_should_be_list()
+        assert e == Exceptions.config_error_custom_types_should_be_list_or_map()
     end
   end
 

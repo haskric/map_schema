@@ -31,12 +31,28 @@ defmodule MapSchema.Exceptions do
     throw(config_error_custom_types_should_be_list())
   end
 
+  def config_error_custom_types_should_be_list_or_map do
+    "MapSchema error config: Custom types should be a list or a map."
+  end
+  def throw_config_error_custom_types_should_be_list_or_map do
+    throw(config_error_custom_types_should_be_list_or_map())
+  end
+
   def config_error_schema_should_be_map do
     "MapSchema error config: Schema should be a map."
   end
   def throw_config_error_schema_should_be_map do
     throw(config_error_schema_should_be_map())
   end
+
+  def error_type_dont_undefined(type) do
+    "Error Type '#{type}' is undefined add into custom_types or remove it."
+  end
+  def throw_error_type_dont_undefined(type) do
+    throw (error_type_dont_undefined(type))
+  end
+
+
 
   def config_error_atomize_schema do
     "MapSchema error config: atomize should be a boolean. Review docs before of active."
@@ -45,11 +61,11 @@ defmodule MapSchema.Exceptions do
     throw(config_error_atomize_schema())
   end
 
-  def error_set_of_doctest_cannot_be_empty do
-    "Definition of custom type error: the set of testing can´t be empty. Please complete it for have free test."
+  def config_error_type_name_definition(deftype) do
+    "MapSchema error config: type_#{deftype} should be a string or atom (with length > 3)"
   end
-  def throw_error_set_of_doctest_cannot_be_empty do
-    throw(error_set_of_doctest_cannot_be_empty())
+  def throw_config_error_type_name_definition(deftype) do
+    throw(config_error_type_name_definition(deftype))
   end
 
   def config_atomize_schema(field) do

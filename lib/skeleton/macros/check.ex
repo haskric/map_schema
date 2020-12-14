@@ -3,8 +3,6 @@ defmodule MapSchema.Macros.Check do
   @doc """
   The Check module compone the macros that let us, build the methods is_valid?:
 
-  `is_valid?(map)`
-
   """
   def install do
     build_check()

@@ -30,10 +30,14 @@ defmodule MapSchema.MixProject do
       # Json encoder
       {:jason, "~> 1.2"},
 
-      # deps.dev
+      # mix docs
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.19", only: :dev},
+
+      ## MIX_ENV=test mix coveralls.html
       {:excoveralls, "~> 0.10", only: :test},
+
+      ## mix credo
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end

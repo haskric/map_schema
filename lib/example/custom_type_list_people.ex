@@ -48,7 +48,13 @@ defmodule MapSchema.Examples.CustomTypeRecursive.ListPeople do
   @spec is_valid?(any) :: boolean
   def is_valid?(_value), do: true
 
+  @doc """
+    ## Example:
 
+      iex> alias MapSchema.Examples.CustomTypeRecursive.ListPeople
+      iex> ListPeople.doctest_values()
+      [{"[%{\\"name\\"=> \\"bob\\"},%{\\"name\\"=>\\"mary\\"}]","[%{\\"name\\"=> \\"bob\\"},%{\\"name\\"=>\\"mary\\"}]"}]
+  """
   @spec doctest_values :: [{any, any}]
   def doctest_values do
     ["[%{\"name\"=> \"bob\"},%{\"name\"=>\"mary\"}]"]

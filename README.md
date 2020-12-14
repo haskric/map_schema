@@ -19,7 +19,7 @@ end
 
 The map_schema will include in the module multiple methods
 with documentation even with some doctest examples... ;) 
-then it´s simple create your schema, add ``ex_doc`` in mix, and use ``mix docs`` and your team will can see all methods that your module will have thanks the "witchcraft" of elixir macros, all ready to use it.
+then it´s simple create your schema, add ex_doc in mix, and use ``mix docs`` and your team will can see all methods that your module will have thanks the "witchcraft" of elixir macros, all ready to use it.
 
 ```elixir
 defmodule MapSchema.Examples.Person do
@@ -145,7 +145,7 @@ You can update many fields using a general put, every field will be cast and typ
 | mut_contact_others(map,fn_mut) | Change the value using fn_mut |
 
 
-### Json Encoding
+### JSON ENCONDING 
 
 ```elixir
   test "Example of json encoding" do
@@ -173,43 +173,6 @@ You can update many fields using a general put, every field will be cast and typ
 | json_encode(mapa, json) | Json to Existing Map (Checking typing, and cast) |
 
 
-### Atomize Schema (Dot Sintax) ( Only in Versions > 0.2.2 )
-
-```elixir
-defmodule MapSchema.Examples.Employee do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :name => :string,
-        :surname => :string,
-        :contact => %{
-          :email => :string,
-        }
-    },
-    custom_types: []
-end
-```
-
-In the next release you will can active atomize mode in your schemas, this can be problematic with json_encoding then we need say the schema that you want use it. It´s important this because let us use a doc sintax to access easy the information.
-
-
-```elixir
-  test "New employee get with dot sintax" do
-    emp = Employee.new()
-      |> Employee.put_name("Ric")
-      |> Employee.put_surname("H")
-      |> Employee.put_contact_email("nested@email.com")
-
-    assert emp.name == "Ric"
-    assert Employee.get_name(emp) == "Ric"
-
-    assert emp.surname == "H"
-    assert Employee.get_surname(emp) == "H"
-
-    assert emp.contact.email == "nested@email.com"
-    assert Employee.get_contact_email(emp) == "nested@email.com"
-  end
-```
 
 ### Table of Types
 
