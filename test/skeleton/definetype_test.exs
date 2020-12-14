@@ -4,13 +4,33 @@ defmodule MapSchema.DefineTypeTest do
 
   alias MapSchema.Exceptions
 
+
+  test "Recursive definition MapSchema" do
+
+    defmodule Item do
+      @moduledoc false
+      use MapSchema,
+        type_list_name: "<list_items>",
+        schema: %{
+          "name" => :string,
+          "list_items" => "<list_items>"
+        },
+        custom_types: [
+          MapSchema.DefineTypeTest.Item.TypeList
+        ]
+    end
+
+    IO.inspect Item.schema_types()
+
+  end
+
   test "Autodefinition of type that let us use in others MapSchema" do
 
     defmodule Phone do
       @moduledoc false
       use MapSchema,
         type_name: "<phone>",
-        type_list_name: "<phone>",
+        type_list_name: "<list_phones>",
         schema: %{
           "ext" => :string,
           "phone" => :string
