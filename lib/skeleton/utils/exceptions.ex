@@ -45,6 +45,15 @@ defmodule MapSchema.Exceptions do
     throw(config_error_atomize_schema())
   end
 
+  def config_error_type_name_definition(deftype) do
+    "MapSchema error config: type_#{deftype} should be a string or atom (with length > 3)"
+  end
+  def throw_config_error_type_name_definition(deftype) do
+    throw(config_error_type_name_definition(deftype))
+  end
+
+
+
   def error_set_of_doctest_cannot_be_empty do
     "Definition of custom type error: the set of testing can´t be empty. Please complete it for have free test."
   end
