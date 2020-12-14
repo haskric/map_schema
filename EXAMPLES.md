@@ -81,7 +81,7 @@ end
   end
 ```
 
-### Put and Put_ifmatch
+## Put and Put_ifmatch
 
 You can update many fields using a general put, every field will be cast and type check before of update. But if you try put a field that dont exist in the schema the method put will return a exception because you tried break the schema. Well there are a other option, you can use `put_ifmatch` that if a field dont exist in the schema it will omited.
 
