@@ -39,7 +39,6 @@ defmodule MapSchema.BaseTest do
             "any" => :any,
             "string_autocast_to_integer" => :string_to_integer,
             "string_autocast_to_float" => :string_to_float,
-            "custom_type" => :custom_type,
             "nested" => %{
               "string" => :string,
               "int" => :integer,
@@ -51,7 +50,6 @@ defmodule MapSchema.BaseTest do
               "any" => :any,
               "string_autocast_to_integer" => :string_to_integer,
               "string_autocast_to_float" => :string_to_float,
-              "custom_type" => :custom_type
             }
         }
     end

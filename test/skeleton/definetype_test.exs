@@ -15,9 +15,9 @@ defmodule MapSchema.DefineTypeTest do
           "name" => :string,
           "list_items" => "<list_items>"
         },
-        custom_types: [
-          MapSchema.DefineTypeTest.Item.TypeList
-        ]
+        custom_types: %{
+          "<list_items>" => MapSchema.DefineTypeTest.Item.TypeList
+        }
     end
 
     IO.inspect Item.schema_types()

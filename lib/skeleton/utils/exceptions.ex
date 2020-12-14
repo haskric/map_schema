@@ -31,6 +31,13 @@ defmodule MapSchema.Exceptions do
     throw(config_error_custom_types_should_be_list())
   end
 
+  def config_error_custom_types_should_be_list_or_map do
+    "MapSchema error config: Custom types should be a list or a map."
+  end
+  def throw_config_error_custom_types_should_be_list_or_map do
+    throw(config_error_custom_types_should_be_list_or_map())
+  end
+
   def config_error_schema_should_be_map do
     "MapSchema error config: Schema should be a map."
   end
