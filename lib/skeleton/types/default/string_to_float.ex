@@ -1,5 +1,6 @@
 defmodule MapSchema.DefaultTypes.MSchemaStringToFloat do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   StringToFloat type
   """
   @behaviour MapSchema.CustomType

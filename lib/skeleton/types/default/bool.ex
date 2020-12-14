@@ -1,7 +1,6 @@
 defmodule MapSchema.DefaultTypes.MSchemaBool do
-  @moduledoc """
-  Bool type
-  """
+  @moduledoc false
+
   @behaviour MapSchema.CustomType
 
   alias MapSchema.DefaultTypes.MSchemaBoolean

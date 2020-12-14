@@ -1,5 +1,6 @@
 defmodule MapSchema.DefaultTypes.MSchemaMap do
-  @moduledoc """
+  @moduledoc false
+  @doc """
   Map type
   """
   @behaviour MapSchema.CustomType
