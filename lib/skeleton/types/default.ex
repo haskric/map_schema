@@ -1,12 +1,13 @@
 defmodule MapSchema.Types.Default do
   @moduledoc false
+  alias MapSchema.Exceptions
 
   def get_default_type_module(type) do
     module = default_map()
       |> Map.get(type)
 
     if is_nil(module) do
-      throw "Error Type '#{type}' is undefined add into custom_types or remove it."
+      Exceptions.throw_error_type_dont_undefined(type)
     else
       module
     end

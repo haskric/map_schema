@@ -4,6 +4,71 @@ defmodule MapSchema.DefineTypeTest do
 
   alias MapSchema.Exceptions
 
+  test "Define type_name with less 3 lenght" do
+    try do
+      defmodule ShortTypeName do
+        @moduledoc false
+        use MapSchema,
+          type_name: "1",
+          schema: %{
+            "field" => :string
+          }
+      end
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.config_error_type_name_definition("name")
+    end
+  end
+
+  test "Define type_list_name with less 3 lenght" do
+    try do
+      defmodule ShortTypeListName do
+        @moduledoc false
+        use MapSchema,
+          type_list_name: "1",
+          schema: %{
+            "field" => :string
+          }
+      end
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.config_error_type_name_definition("list_name")
+    end
+  end
+
+
+  test "Define type_list_name and type_name with 4 lenght" do
+    defmodule TypesTags4Length do
+      @moduledoc false
+      use MapSchema,
+        type_name: "1234",
+        type_list_name: "1234",
+        schema: %{
+          "field" => :string
+        }
+    end
+
+    assert true
+  end
+
+  test "Define type_list_name and type_name Atoms with 4 lenght" do
+    defmodule TypesTags4LengthAtoms do
+      @moduledoc false
+      use MapSchema,
+        type_name: :atom,
+        type_list_name: :atom,
+        schema: %{
+          "field" => :string
+        }
+    end
+
+    assert true
+  end
+
   test "Recursive definition MapSchema" do
 
     defmodule Item do

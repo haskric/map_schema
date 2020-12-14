@@ -2,6 +2,7 @@ defmodule MapSchema.AtomizedSchemaTest do
   @moduledoc false
   use ExUnit.Case
   alias MapSchema.Examples.Employee
+  alias MapSchema.Exceptions
 
   test "New employee get with dot sintax" do
     emp = Employee.new()
@@ -63,6 +64,51 @@ defmodule MapSchema.AtomizedSchemaTest do
 
     json = AtomizeWithNestedWithout.json_encode(container)
     assert AtomizeWithNestedWithout.json_decode(json) == container
+  end
+
+  test "Atomize should be a boolean" do
+    try do
+      defmodule AtomizeShouldBeBoolean do
+        @moduledoc false
+        use MapSchema,
+          atomize: "true",
+          schema: %{
+            :name => :string
+          }
+      end
+
+      assert false
+    catch
+      e ->
+        assert e == Exceptions.config_error_atomize_schema()
+    end
+  end
+
+  ## IN NEXT VERSION SHOULD BE CONTROL THAT NEVER THE USER USE FIELD
+  ## THAT DONT BE STRING OR ATOM AND IF YOU USE ATOMIZE ALL SHOULD BE ATOM.
+  test "(PENDING OF BLOCKED) Atomize with diverse types of fields" do
+    try do
+
+    defmodule MultipleTypesOfFields do
+        @moduledoc false
+        use MapSchema,
+          atomize: true,
+          schema: %{
+            :name => :string,
+            1 => :integer,
+            "one" => :float,
+          }
+      end
+
+    _rare_fields = MultipleTypesOfFields.new()
+      |> MultipleTypesOfFields.put(%{
+        :name => "name", 1 => 1, "one" => 1.0
+       })
+
+      catch
+        e ->
+          assert e == Exceptions.not_exist_field_in_schema("1")
+      end
   end
 
 end

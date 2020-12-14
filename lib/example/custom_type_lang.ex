@@ -70,7 +70,6 @@ defmodule MapSchema.Examples.CustomTypeLang do
     value in ["zh", "en", "es"]
   end
 
-
   @doc """
   Stop... the magic continue. After define our cast and validation functions
   we can define a generador of doctest... Yes ¡¡ You are reading well.. TEST FREE¡¡
@@ -84,6 +83,11 @@ defmodule MapSchema.Examples.CustomTypeLang do
   It´s important be careful because the values should be in string format for can be writed
   in the doctest please review that `mix docs` run without problems.
 
+  ## Examples
+
+      iex> alias MapSchema.Examples.CustomTypeLang
+      iex> CustomTypeLang.doctest_values()
+      [{"\\"zh\\"", "\\"zh\\""}, {"\\"en\\"", "\\"en\\""}, {"\\"es\\"", "\\"es\\""}]
 
   """
   @spec doctest_values :: [{any, any}]

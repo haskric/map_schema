@@ -45,6 +45,15 @@ defmodule MapSchema.Exceptions do
     throw(config_error_schema_should_be_map())
   end
 
+  def error_type_dont_undefined(type) do
+    "Error Type '#{type}' is undefined add into custom_types or remove it."
+  end
+  def throw_error_type_dont_undefined(type) do
+    throw (error_type_dont_undefined(type))
+  end
+
+
+
   def config_error_atomize_schema do
     "MapSchema error config: atomize should be a boolean. Review docs before of active."
   end
