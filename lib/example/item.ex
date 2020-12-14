@@ -1,5 +1,6 @@
 defmodule Item do
   @moduledoc false
+  ## Example of recursive type
   use MapSchema,
     type_name: "<item>",
     type_list_name: "<list_items>",
