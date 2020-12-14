@@ -32,9 +32,7 @@ defmodule MapSchema.AtomizedSchemaTest do
 
   test "Checking compatible multiple schemas" do
     defmodule ClassicMode do
-      @moduledoc """
-      Person example
-      """
+      @moduledoc false
       use MapSchema,
         schema: %{
             "field1" => :string
@@ -44,9 +42,7 @@ defmodule MapSchema.AtomizedSchemaTest do
     end
 
     defmodule AtomizeWithNestedWithout do
-      @moduledoc """
-      Person example
-      """
+      @moduledoc false
       use MapSchema,
         atomize: true,
         schema: %{
