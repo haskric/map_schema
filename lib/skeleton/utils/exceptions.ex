@@ -59,7 +59,6 @@ defmodule MapSchema.Exceptions do
     throw(config_error_type_name_definition(deftype))
   end
 
-
   def config_atomize_schema(field) do
     "Schema caution: The #{field} is atom but the atomize flag isnt active. You can have problems with json encoding."
   end

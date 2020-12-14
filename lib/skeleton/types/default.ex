@@ -1,4 +1,5 @@
 defmodule MapSchema.Types.Default do
+  @moduledoc false
 
   def get_default_type_module(type) do
     module = default_map()
@@ -25,6 +26,5 @@ defmodule MapSchema.Types.Default do
       string_to_integer: MapSchema.DefaultTypes.MSchemaStringToInteger
     }
   end
-
 
 end

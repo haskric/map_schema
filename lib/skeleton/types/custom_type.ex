@@ -43,7 +43,6 @@ defmodule MapSchema.CustomType do
   """
   @callback is_valid?(value :: any) :: true | false
 
-
   @doc """
   If you implement this method well you will have doctest free for all
   the method of your schema. Yes... Sound good... ;)
