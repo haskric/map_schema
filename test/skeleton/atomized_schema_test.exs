@@ -86,7 +86,7 @@ defmodule MapSchema.AtomizedSchemaTest do
 
   ## IN NEXT VERSION SHOULD BE CONTROL THAT NEVER THE USER USE FIELD
   ## THAT DONT BE STRING OR ATOM AND IF YOU USE ATOMIZE ALL SHOULD BE ATOM.
-  test "(PENDING OF BLOCKED) Atomize with diverse types of fields" do
+  test "OK > versions 0.2.6 - It´s blocked - Atomize with diverse types of fields" do
     try do
 
     defmodule MultipleTypesOfFields do
@@ -107,7 +107,7 @@ defmodule MapSchema.AtomizedSchemaTest do
 
       catch
         e ->
-          assert e == Exceptions.not_exist_field_in_schema("1")
+          assert e == Exceptions.config_schema_error_the_fields_should_be_atom()
       end
   end
 
