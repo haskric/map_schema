@@ -6,6 +6,7 @@ defmodule MapSchema do
   alias MapSchema.Atomize
   alias MapSchema.DefType
   alias MapSchema.TypesConfig
+  alias MapSchema.SchemaValidator
 
   alias MapSchema.Macros.AtomizeMode
   alias MapSchema.Macros.Base
@@ -38,6 +39,7 @@ defmodule MapSchema do
     type_list_name = DefType.param_config_list(type_list_name)
     custom_types = TypesConfig.param_config(custom_types)
     flag_atomize = Atomize.param_config(flag_atomize)
+    SchemaValidator.check_config(schema, flag_atomize)
 
     %MapSchema{
       schema: schema,
