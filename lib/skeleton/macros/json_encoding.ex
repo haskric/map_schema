@@ -64,7 +64,14 @@ defmodule MapSchema.Macros.JsonEncoding do
       - json: Json object
 
       """
-      @spec json_decode(mapa :: __MODULE__,  json:: BitString) :: Any
+      @spec json_decode(
+        any(),
+        binary()
+        | maybe_improper_list(
+            binary() | maybe_improper_list(any(), binary() | []) | byte(),
+            binary() | []
+          )
+      ) :: any()
       def unquote(:json_decode)(var!(mapa), var!(json)) do
         put(var!(mapa), Jason.decode!(var!(json)))
       end
