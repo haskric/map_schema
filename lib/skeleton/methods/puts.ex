@@ -22,10 +22,13 @@ defmodule MapSchema.Methods.Puts do
     end
   end
 
-  defp generic_put(mapa, lista_fields, value) do
+  defp generic_put(mapa, lista_fields, value) when is_map(mapa) do
     mapa
     |> init_nested_maps(lista_fields)
     |> put_in(lista_fields, value)
+  end
+  defp generic_put(_mapa, _lista_fields, _value) do
+    Exceptions.throw_error_should_be_a_map()
   end
 
   defp init_nested_maps(mapa, []) do

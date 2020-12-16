@@ -32,6 +32,9 @@ defmodule MapSchema.Macros.PutPartial do
       def unquote(:put)(var!(map_update)) when is_map(var!(map_update)) do
         put(%{}, var!(map_update))
       end
+      def unquote(:put)(_) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
+      end
 
       @doc """
       Put a new value in each field of the update map,  in the field of the object.
@@ -39,10 +42,13 @@ defmodule MapSchema.Macros.PutPartial do
       But before of update the values always will be check the type.
       If a field dont exist in the schema throw exception. (If you need be less strict you can use `put_ifmatch/1` or `put_ifmatch/2`)
       """
-      def unquote(:put)(var!(mapa), var!(map_update)) when is_map(var!(map_update)) do
+      def unquote(:put)(var!(mapa), var!(map_update)) when is_map(var!(mapa)) and is_map(var!(map_update)) do
         var!(atomize) = schema_is_atomize?()
         var!(custom_types) = schema_types()
         PutPartialTypes.put(__MODULE__, var!(mapa), var!(map_update), var!(custom_types), var!(atomize))
+      end
+      def unquote(:put)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
 
       @doc """
@@ -53,16 +59,22 @@ defmodule MapSchema.Macros.PutPartial do
       def unquote(:put_ifmatch)(var!(map_update)) when is_map(var!(map_update)) do
         put_ifmatch(%{}, var!(map_update))
       end
+      def unquote(:put_ifmatch)(_) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
+      end
 
       @doc """
       Put a new value in each field of the update map, in the field of the object only if exist the field in the schema (ifmatch)
 
       But before of update the values always will be check the type.
       """
-      def unquote(:put_ifmatch)(var!(mapa), var!(map_update)) when is_map(var!(map_update)) do
+      def unquote(:put_ifmatch)(var!(mapa), var!(map_update)) when is_map(var!(mapa)) and is_map(var!(map_update)) do
         var!(atomize) = schema_is_atomize?()
         var!(custom_types) = schema_types()
         PutPartialTypes.put_ifmatch(__MODULE__, var!(mapa), var!(map_update), var!(custom_types), var!(atomize))
+      end
+      def unquote(:put_ifmatch)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
 
     end

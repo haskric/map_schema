@@ -41,9 +41,12 @@ defmodule MapSchema.Macros.PutsTypes do
             #{test_expected}
 
       """
-      def unquote(name_function)(var!(mapa), var!(value)) do
+      def unquote(name_function)(var!(mapa), var!(value)) when is_map(var!(mapa)) do
         unquote(module_custom_type)
         |> Puts.generic_put_custom_type(unquote(type), var!(mapa), unquote(lista_fields), var!(value))
+      end
+      def unquote(name_function)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end
@@ -61,9 +64,12 @@ defmodule MapSchema.Macros.PutsTypes do
 
       Remember that #{field} is #{type} type.
       """
-      def unquote(name_function)(var!(mapa), var!(value)) do
+      def unquote(name_function)(var!(mapa), var!(value)) when is_map(var!(mapa)) do
         unquote(module_custom_type)
         |> Puts.generic_put_custom_type(unquote(type), var!(mapa), unquote(lista_fields), var!(value))
+      end
+      def unquote(name_function)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end

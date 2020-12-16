@@ -10,7 +10,7 @@ Note: Now, I am working in improve it. You can use it but return here for check 
 ```elixir
 def deps do
   [
-    {:map_schema, "~> 0.2.6"}
+    {:map_schema, "~> 0.2.7"}
   ]
 end
 ```
