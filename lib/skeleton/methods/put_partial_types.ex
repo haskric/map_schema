@@ -19,16 +19,22 @@ defmodule MapSchema.Methods.PutPartialTypes do
             emit_exception: true,
             flag_atomize: false
 
-  def put(module, map, map_update, custom_types, flag_atomize) do
+  def put(module, map, map_update, custom_types, flag_atomize) when is_map(map) and is_map(map_update) do
     emit_exception = true
     action = action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize)
     execute_put(action)
   end
+  def put(_module, _map, _map_update, _custom_types, _flag_atomize) do
+    Exceptions.throw_error_should_be_a_map()
+  end
 
-  def put_ifmatch(module, map, map_update, custom_types, flag_atomize) do
+  def put_ifmatch(module, map, map_update, custom_types, flag_atomize) when is_map(map) and is_map(map_update)  do
     emit_exception = false
     action = action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize)
     execute_put(action)
+  end
+  def put_ifmatch(_module, _map, _map_update, _custom_types, _flag_atomize) do
+    Exceptions.throw_error_should_be_a_map()
   end
 
   defp action_contructor(module, map, map_update, custom_types, emit_exception, flag_atomize) do

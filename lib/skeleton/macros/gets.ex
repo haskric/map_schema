@@ -21,9 +21,12 @@ defmodule MapSchema.Macros.Gets do
       @doc """
       Get #{field} value of #{type} type.
       """
-      def unquote(name_function)(var!(mapa)) do
+      def unquote(name_function)(var!(mapa)) when is_map(var!(mapa)) do
         var!(mapa)
         |> Gets.generic_get(unquote(lista_fields))
+      end
+      def unquote(name_function)(_) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end

@@ -40,12 +40,15 @@ defmodule MapSchema.Macros.MutsTypes do
             #{test_expected}
 
       """
-      def unquote(name_function_mut)(var!(mapa), var!(mut_fn)) do
+      def unquote(name_function_mut)(var!(mapa), var!(mut_fn)) when is_map(var!(mapa)) do
         var!(muted_value) = var!(mapa)
           |> unquote(name_function_get)()
           |> var!(mut_fn).()
 
         unquote(name_function_put)(var!(mapa), var!(muted_value))
+      end
+      def unquote(name_function_mut)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end
@@ -63,12 +66,15 @@ defmodule MapSchema.Macros.MutsTypes do
 
       Remember that #{field} is #{type} type.
       """
-      def unquote(name_function_mut)(var!(mapa), var!(mut_fn)) do
+      def unquote(name_function_mut)(var!(mapa), var!(mut_fn)) when is_map(var!(mapa)) do
         var!(muted_value) = var!(mapa)
           |> unquote(name_function_get)()
           |> var!(mut_fn).()
 
         unquote(name_function_put)(var!(mapa), var!(muted_value))
+      end
+      def unquote(name_function_mut)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end

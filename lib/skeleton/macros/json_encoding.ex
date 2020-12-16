@@ -31,8 +31,11 @@ defmodule MapSchema.Macros.JsonEncoding do
 
       Note: This method use Jason library.
       """
-      def unquote(:json_encode)(var!(mapa)) do
+      def unquote(:json_encode)(var!(mapa)) when is_map(var!(mapa)) do
         Jason.encode!(var!(mapa))
+      end
+      def unquote(:json_encode)(_) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end
@@ -47,6 +50,7 @@ defmodule MapSchema.Macros.JsonEncoding do
       def unquote(:json_decode)(var!(json)) do
         put(%{}, Jason.decode!(var!(json)))
       end
+
     end
   end
 
@@ -72,8 +76,11 @@ defmodule MapSchema.Macros.JsonEncoding do
             binary() | []
           )
       ) :: any()
-      def unquote(:json_decode)(var!(mapa), var!(json)) do
+      def unquote(:json_decode)(var!(mapa), var!(json)) when is_map(var!(mapa)) do
         put(var!(mapa), Jason.decode!(var!(json)))
+      end
+      def unquote(:json_decode)(_, _) do
+        MapSchema.Exceptions.throw_error_should_be_a_map()
       end
     end
   end

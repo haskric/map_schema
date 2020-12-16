@@ -4,7 +4,7 @@ defmodule MapSchema.MixProject do
   def project do
     [
       app: :map_schema,
-      version: "0.2.6",
+      version: "0.2.7",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       description: description(),

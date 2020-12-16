@@ -10,6 +10,13 @@ defmodule MapSchema.Exceptions do
     throw(not_exist_field_in_schema(field))
   end
 
+  def error_should_be_a_map do
+    "MapSchema error: Wait a map, Please review the input parameters."
+  end
+  def throw_error_should_be_a_map do
+    throw(error_should_be_a_map())
+  end
+
   def cast_error(field, type) do
     "Casting error: We can´t cast the value of '#{field}' to '#{type}' type. Review the type it please."
   end
