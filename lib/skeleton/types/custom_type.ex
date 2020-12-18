@@ -12,7 +12,7 @@ defmodule MapSchema.CustomType do
   Like the example `MapSchema.Examples.CustomTypeLang`
 
   """
-  @callback name :: atom
+  @callback name :: atom | String.t()
 
   @doc """
   If a item it´s nested.
