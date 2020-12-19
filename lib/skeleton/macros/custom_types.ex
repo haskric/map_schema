@@ -22,9 +22,9 @@ defmodule MapSchema.Macros.CustomTypes do
       @doc """
       Get the module of type by name
       """
-      def unquote(:schema_get_type_module)(var!(name)) do
+      def unquote(:schema_get_type_module)(var!(type)) do
         schema_types()
-        |> Map.get(var!(name))
+        |> MapSchema.Types.get_custom_type_module(var!(type))
       end
     end
   end
