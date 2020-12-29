@@ -15,4 +15,6 @@ defmodule MapSchema.DefaultTypes.DoctestTest do
   doctest MapSchema.DefaultTypes.MSchemaStringToInteger
   doctest MapSchema.DefaultTypes.MSchemaStringToFloat
 
+  doctest MapSchema.DefaultTypes.Union.MSchemaNumber
+
 end

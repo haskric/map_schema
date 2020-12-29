@@ -26,7 +26,8 @@ defmodule MapSchema.Types.Default do
       keyword: MapSchema.DefaultTypes.MSchemaKeyword,
       string: MapSchema.DefaultTypes.MSchemaString,
       string_to_float: MapSchema.DefaultTypes.MSchemaStringToFloat,
-      string_to_integer: MapSchema.DefaultTypes.MSchemaStringToInteger
+      string_to_integer: MapSchema.DefaultTypes.MSchemaStringToInteger,
+      number: MapSchema.DefaultTypes.Union.MSchemaNumber
     }
   end
 
