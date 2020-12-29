@@ -10,10 +10,21 @@ Note: Now, I am working in improve it. You can use it but return here for check 
 ```elixir
 def deps do
   [
-    {:map_schema, "~> 0.2.7"}
+    {:map_schema, "~> 0.3.0"}
   ]
 end
 ```
+
+## Default Types Supported
+
+* Boolean `:bool` or `:boolean`
+* Atom `:atom`
+* Numeric types `:float`, `:integer`, `:string_to_float`, `:string_to_float`, and `:number` that it´s the union of others numberic types.
+* String `:string`
+* Map `:map`
+* Anything `:any`
+* Keyword `:keyword`
+* List `:list`
 
 ## Usage
 
@@ -255,7 +266,7 @@ defmodule MapSchema.Examples.CustomTypeLang do
 
     iex> alias MapSchema.Examples.CustomTypeLang
     iex> CustomTypeLang.cast(nil)
-    :error
+    :map_schema_type_error 
 
   """
   @spec cast(value :: any) :: any | :map_schema_type_error | :error
@@ -410,3 +421,63 @@ end
 ```
 
  
+## Only in Versions > 0.2.7
+
+Add default types `:atom`, `:keyword` and `:number` that include all types number (`:integer`, `:float`, `:string_to_float`, `:string_to_integer`)
+
+### Union custom types
+
+```elixir
+ defmodule StringOrAtomOrIntegerType do
+    @moduledoc false
+    use MapSchema.Types.TypeUnion,
+      name: "<string|atom|integer>",
+      types: [
+        :string, :atom, :integer
+      ]
+
+  end
+
+  defmodule SchemaWithUnionType do
+    @moduledoc false
+
+    use MapSchema,
+      atomize: true,
+      schema: %{
+        :field => "<string|atom|integer>"
+      },
+      custom_types: %{
+        "<string|atom|integer>" => MapSchema.Types.UnionTest.StringOrAtomOrIntegerType
+      }
+  end
+
+  alias MapSchema.Types.UnionTest.SchemaWithUnionType
+
+  test "valid values union" do
+    obj = SchemaWithUnionType.new()
+      |> SchemaWithUnionType.put_field(1)
+
+    assert obj.field == 1
+
+    obj = SchemaWithUnionType.new()
+      |> SchemaWithUnionType.put_field(:example_of_atom)
+
+    assert obj.field == :example_of_atom
+
+    obj = SchemaWithUnionType.new()
+      |> SchemaWithUnionType.put_field("string_example")
+
+    assert obj.field == "string_example"
+  end
+
+  test "invalid values union" do
+    try do
+      _obj = SchemaWithUnionType.new()
+        |> SchemaWithUnionType.put_field([1, 2, 3])
+
+    catch
+      e ->
+        assert e == Exceptions.cast_error("field", "<string|atom|integer>")
+    end
+  end
+```

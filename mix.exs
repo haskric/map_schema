@@ -1,10 +1,11 @@
 defmodule MapSchema.MixProject do
+  @moduledoc false
   use Mix.Project
 
   def project do
     [
       app: :map_schema,
-      version: "0.2.7",
+      version: "0.3.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       description: description(),
@@ -30,7 +31,8 @@ defmodule MapSchema.MixProject do
       main: "MapSchema",
       extras: [
         "README.md",
-        "EXAMPLES.md"
+        "EXAMPLES.md",
+        "TYPES.md"
       ]
     ]
   end
@@ -54,7 +56,7 @@ defmodule MapSchema.MixProject do
   end
 
   defp description do
-    "Simple, agile, map schema in elixir with types check and json encoding"
+    "Simple, agile, map schema in elixir with type checking, custom types with casting and validation and with json encoding"
   end
 
   defp package do
