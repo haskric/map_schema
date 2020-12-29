@@ -5,7 +5,7 @@ defmodule MapSchema.DefaultTypes.MSchemaBool do
 
   alias MapSchema.DefaultTypes.MSchemaBoolean
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :bool
   def nested?, do: false
 

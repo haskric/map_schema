@@ -15,6 +15,7 @@ defmodule MapSchema.Types.Default do
 
   defp default_map do
     %{
+      atom: MapSchema.DefaultTypes.MSchemaAtom,
       any: MapSchema.DefaultTypes.MSchemaAny,
       bool: MapSchema.DefaultTypes.MSchemaBool,
       boolean: MapSchema.DefaultTypes.MSchemaBoolean,
@@ -22,6 +23,7 @@ defmodule MapSchema.Types.Default do
       integer: MapSchema.DefaultTypes.MSchemaInteger,
       list: MapSchema.DefaultTypes.MSchemaList,
       map: MapSchema.DefaultTypes.MSchemaMap,
+      keyword: MapSchema.DefaultTypes.MSchemaKeyword,
       string: MapSchema.DefaultTypes.MSchemaString,
       string_to_float: MapSchema.DefaultTypes.MSchemaStringToFloat,
       string_to_integer: MapSchema.DefaultTypes.MSchemaStringToInteger

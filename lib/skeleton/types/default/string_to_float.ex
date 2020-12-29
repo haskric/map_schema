@@ -7,7 +7,7 @@ defmodule MapSchema.DefaultTypes.MSchemaStringToFloat do
 
   alias MapSchema.ExuString
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :string_to_float
   def nested?, do: false
 

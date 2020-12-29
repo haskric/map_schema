@@ -5,7 +5,7 @@ defmodule MapSchema.DefaultTypes.MSchemaList do
   """
   @behaviour MapSchema.CustomType
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :list
   def nested?, do: true
 

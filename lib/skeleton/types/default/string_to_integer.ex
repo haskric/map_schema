@@ -7,7 +7,7 @@ defmodule MapSchema.DefaultTypes.MSchemaStringToInteger do
 
   alias MapSchema.ExuString
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :string_to_integer
   def nested?, do: false
 

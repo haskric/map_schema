@@ -5,7 +5,7 @@ defmodule MapSchema.DefaultTypes.MSchemaInteger do
   """
   @behaviour MapSchema.CustomType
 
-  @spec name :: :integer
+  @spec name :: atom | String.t()
   def name, do: :integer
   def nested?, do: false
 
