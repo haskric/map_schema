@@ -5,7 +5,7 @@ defmodule MapSchema.DefaultTypes.MSchemaAny do
   """
   @behaviour MapSchema.CustomType
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :any
   def nested?, do: true
 
@@ -18,7 +18,7 @@ defmodule MapSchema.DefaultTypes.MSchemaAny do
       iex> MSchemaAny.cast(["1","2"])
       ["1","2"]
   """
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
     value
   end

@@ -73,8 +73,6 @@ defmodule MapSchema.Exceptions do
     throw (error_type_dont_undefined(type))
   end
 
-
-
   def config_error_atomize_schema do
     "MapSchema error config: atomize should be a boolean. Review docs before of active."
   end
@@ -96,6 +94,13 @@ defmodule MapSchema.Exceptions do
     #IO.warn(config_atomize_schema(field))
     # Sorry, strict mode
     throw(config_atomize_schema(field))
+  end
+
+  def config_union_type_definition_error do
+    "Error definition of Union type, please review the list of types."
+  end
+  def throw_config_union_type_definition_error do
+    throw(config_union_type_definition_error())
   end
 
 end

@@ -29,7 +29,7 @@ defmodule MapSchema.Examples.CustomTypeRecursive.ListPeople do
       :error
 
   """
-  @spec cast(any) :: any | :error
+  @spec cast(value :: any) :: any | :map_schema_type_error | :error
   def cast(list_people) do
     list_people
     |> Enum.map(fn(person) ->

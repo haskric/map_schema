@@ -6,7 +6,7 @@ defmodule MapSchema.Types do
 
   def execute_autocast_typechecking(module_custom_type, value) do
     case cast_value(module_custom_type, value) do
-      :error -> {:error_cast, nil}
+      :map_schema_type_error -> {:error_cast, nil}
       after_cast_value ->
         if check_is_valid?(module_custom_type, after_cast_value) do
           {:ok, after_cast_value}

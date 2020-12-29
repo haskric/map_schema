@@ -7,13 +7,16 @@ defmodule MapSchema.DefaultTypes.MSchemaStringToInteger do
 
   alias MapSchema.ExuString
 
-  @spec name :: atom
+  @spec name :: atom | String.t()
   def name, do: :string_to_integer
   def nested?, do: false
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
-    ExuString.to_integer!(value)
+    case ExuString.to_integer!(value) do
+      :error -> :map_schema_type_error
+      cast_value -> cast_value
+    end
   end
 
   @doc """

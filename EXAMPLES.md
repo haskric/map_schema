@@ -196,7 +196,7 @@ defmodule MapSchema.Examples.CustomTypeLang do
     :error
 
   """
-  @spec cast(any) :: any | :error
+  @spec cast(value :: any) :: any | :map_schema_type_error | :error
   def cast(value) when is_bitstring(value) do
     value
     |> String.downcase()
