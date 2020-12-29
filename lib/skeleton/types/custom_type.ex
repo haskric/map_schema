@@ -29,12 +29,14 @@ defmodule MapSchema.CustomType do
   original_data -> cast -> muted_data -> is_valid? -> (ok) put in.
   in case of the cast or validation would have errors MapSchema will throw exception.
 
-  You can return :error for reject a format.
+  You can return :map_schema_type_error for reject a format.
+  In the last versiones we didnt support atoms but now with atoms, we had change
+  the atom to return error of the typical :error to :map_schema_type_error
 
   See the example `MapSchema.Examples.CustomTypeLang` for can take ideas
   of use.
   """
-  @callback cast(value :: any) :: any | :error
+  @callback cast(value :: any) :: any | :map_schema_type_error
 
   @doc """
   The validation should be return true or false.

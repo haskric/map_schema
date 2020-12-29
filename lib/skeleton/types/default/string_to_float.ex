@@ -11,9 +11,12 @@ defmodule MapSchema.DefaultTypes.MSchemaStringToFloat do
   def name, do: :string_to_float
   def nested?, do: false
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
-    ExuString.to_float!(value)
+    case ExuString.to_float!(value) do
+      :error -> :map_schema_type_error
+      cast_value -> cast_value
+    end
   end
 
   @doc """

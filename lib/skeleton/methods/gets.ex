@@ -3,13 +3,14 @@ defmodule MapSchema.Methods.Gets do
   @doc """
   The module have the internal functionality of the methods get
   """
-  alias MapSchema.Exceptions
 
-  def generic_get(mapa, lista_fields) when is_map(mapa) do
+  def generic_get(mapa, lista_fields) do
     get_in(mapa, lista_fields)
   end
-  def generic_get(_, _) do
-    Exceptions.throw_error_should_be_a_map()
-  end
+
+  # The validation should be present in macros.
+  #def generic_get(_, _) do
+  #  Exceptions.throw_error_should_be_a_map()
+  #end
 
 end

@@ -18,7 +18,7 @@ defmodule MapSchema.DefaultTypes.MSchemaAny do
       iex> MSchemaAny.cast(["1","2"])
       ["1","2"]
   """
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
     value
   end

@@ -7,7 +7,7 @@ defmodule MapSchema.DefaultTypes.MSchemaKeyword do
   def name, do: :keyword
   def nested?, do: true
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
     value
   end

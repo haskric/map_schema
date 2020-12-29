@@ -37,9 +37,13 @@ defmodule MapSchema.BaseTest do
             "boolean" => :boolean,
             "map" => :map,
             "any" => :any,
+            "atom" => :atom,
+            "keyword" => :keyword,
             "string_autocast_to_integer" => :string_to_integer,
             "string_autocast_to_float" => :string_to_float,
             "nested" => %{
+              "atom" => :atom,
+              "keyword" => :keyword,
               "string" => :string,
               "int" => :integer,
               "float" => :float,

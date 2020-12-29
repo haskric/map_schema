@@ -71,4 +71,22 @@ defmodule MapSchema.ExceptionsTest do
     end
   end
 
+  test "put should be recive a map" do
+    try do
+      Person.put(:isnt_a_map, %{})
+    catch
+      e ->
+        assert e == Exceptions.error_should_be_a_map()
+    end
+  end
+
+  test "get should be recive a map" do
+    try do
+      Person.get_age(:isnt_a_map)
+    catch
+      e ->
+        assert e == Exceptions.error_should_be_a_map()
+    end
+  end
+
 end

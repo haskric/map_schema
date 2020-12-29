@@ -9,7 +9,7 @@ defmodule MapSchema.DefaultTypes.MSchemaList do
   def name, do: :list
   def nested?, do: true
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
     value
   end

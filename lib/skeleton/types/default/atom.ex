@@ -9,7 +9,7 @@ defmodule MapSchema.DefaultTypes.MSchemaAtom do
   def name, do: :atom
   def nested?, do: false
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) when is_bitstring(value) do
    String.to_atom(value)
   end

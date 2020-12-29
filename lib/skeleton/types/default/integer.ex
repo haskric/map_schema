@@ -9,7 +9,7 @@ defmodule MapSchema.DefaultTypes.MSchemaInteger do
   def name, do: :integer
   def nested?, do: false
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   def cast(value) do
     value
   end

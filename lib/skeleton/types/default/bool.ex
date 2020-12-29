@@ -9,7 +9,7 @@ defmodule MapSchema.DefaultTypes.MSchemaBool do
   def name, do: :bool
   def nested?, do: false
 
-  @spec cast(any) :: any
+  @spec cast(value :: any) :: any | :map_schema_type_error
   defdelegate cast(value), to: MSchemaBoolean
 
   @doc """

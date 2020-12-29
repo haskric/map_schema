@@ -96,4 +96,11 @@ defmodule MapSchema.Exceptions do
     throw(config_atomize_schema(field))
   end
 
+  def config_union_type_definition_error do
+    "Error definition of Union type, please review the list of types."
+  end
+  def throw_config_union_type_definition_error do
+    throw(config_union_type_definition_error())
+  end
+
 end
