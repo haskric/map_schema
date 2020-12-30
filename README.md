@@ -19,7 +19,9 @@ end
 
 * Boolean `:bool` or `:boolean`
 * Atom `:atom`
-* Numeric types `:float`, `:integer`, `:string_to_float`, `:string_to_float`, and `:number` that it´s the union of others numberic types.
+* Numeric types:
+`:float`, `:integer`, `:string_to_float`, `:string_to_float`, 
+and `:number` that it´s the union of others numeric types.
 * String `:string`
 * Map `:map`
 * Anything `:any`

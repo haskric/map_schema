@@ -28,7 +28,7 @@ defmodule MapSchema.MixProject do
 
   def docs do
     [
-      main: "MapSchema",
+      main: "readme",
       extras: [
         "README.md",
         "EXAMPLES.md",
